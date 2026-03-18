@@ -1,0 +1,15 @@
+{
+  "songName": "theme1",
+  "bpm": 128,
+  "noteJumpSpeed": 10,
+  "notes": [
+    { "time": 4.0,  "lineIndex": 0, "lineLayer": 1, "type": 0, "cutDirection": 1 },
+    { "time": 5.0,  "lineIndex": 3, "lineLayer": 1, "type": 1, "cutDirection": 1 },
+    { "time": 6.0,  "lineIndex": 1, "lineLayer": 0, "type": 0, "cutDirection": 0 },
+    { "time": 7.0,  "lineIndex": 2, "lineLayer": 2, "type": 1, "cutDirection": 2 },
+    { "time": 8.0,  "lineIndex": 1, "lineLayer": 1, "type": 0, "cutDirection": 1 }
+  ],
+  "obstacles": [
+    { "time": 10.0, "lineIndex": 0, "width": 1, "duration": 0.5 }
+  ]
+}
