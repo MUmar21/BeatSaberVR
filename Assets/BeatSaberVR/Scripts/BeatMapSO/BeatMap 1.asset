@@ -21,22 +21,22 @@ MonoBehaviour:
     col: 0
     row: 1
     color: 0
-    cutDirection: 2
+    cutDirection: 4
   - time: 5
     col: 3
     row: 1
-    color: 1
-    cutDirection: 3
+    color: 0
+    cutDirection: 4
   - time: 6
     col: 1
     row: 0
-    color: 1
-    cutDirection: 2
+    color: 0
+    cutDirection: 4
   - time: 7
     col: 2
     row: 2
     color: 0
-    cutDirection: 0
+    cutDirection: 4
   - time: 8
     col: 1
     row: 1
@@ -46,18 +46,10 @@ MonoBehaviour:
     col: 1
     row: 1
     color: 0
-    cutDirection: 1
+    cutDirection: 4
   - time: 10
     col: 0
     row: 2
-    color: 1
+    color: 0
     cutDirection: 4
-  obstacles:
-  - time: 5
-    col: 0
-    width: 1
-    duration: 0.5
-  - time: 8
-    col: 0
-    width: 1
-    duration: 0.5
+  obstacles: []

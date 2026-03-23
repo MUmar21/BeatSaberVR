@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03df95fec39de094f8142db15917ca90, type: 3}
-  m_Name: BeatMap 2
+  m_Name: BeatMap 3
   m_EditorClassIdentifier: Assembly-CSharp::BeatMapSO
   songName: theme1
   songClip: {fileID: 8300000, guid: 54957f52ca7cfa144b91784f523dd4bc, type: 3}
@@ -1062,4 +1062,52 @@ MonoBehaviour:
     row: 0
     color: 0
     cutDirection: 3
-  obstacles: []
+  obstacles:
+  - time: 3.046875
+    col: 2
+    width: 1
+    duration: 0.5
+  - time: 12.421875
+    col: 2
+    width: 1
+    duration: 0.5
+  - time: 22.5
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 30.703125
+    col: 2
+    width: 1
+    duration: 0.5
+  - time: 38.90625
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 47.578125
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 56.71875
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 68.4375
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 77.34375
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 88.359375
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 98.671875
+    col: 0
+    width: 1
+    duration: 0.5
+  - time: 107.34375
+    col: 0
+    width: 1
+    duration: 0.5

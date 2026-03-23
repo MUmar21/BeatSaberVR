@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - Sword
   layers:
   - Default
   - TransparentFX
