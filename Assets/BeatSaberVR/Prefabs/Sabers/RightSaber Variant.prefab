@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
+    - target: {fileID: -3149922341101946083, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3149922341101946083, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.02336049
+      objectReference: {fileID: 0}
+    - target: {fileID: -3149922341101946083, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2765502167902398777, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_Name
       value: RightSaber Variant
@@ -28,6 +40,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4c2118f5e4651d04c88f2d1c37b4f3d6, type: 2}
+    - target: {fileID: 8548567910301610074, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: trailMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -153,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8909830476355049530}
   - component: {fileID: 5063991017130269722}
+  - component: {fileID: 8548567910301610074}
   - component: {fileID: -3149922341101946083}
   m_Layer: 0
   m_Name: Saber
@@ -171,11 +172,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.17216258, y: -0.022665627, z: 0.12854317, w: 0.9763827}
   m_LocalPosition: {x: 0, y: 0, z: 0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2569083990961398337}
   - {fileID: 4136626170025349936}
+  - {fileID: 6356479883646011699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 15}
 --- !u!114 &5063991017130269722
@@ -194,6 +196,23 @@ MonoBehaviour:
   trail: {fileID: -3149922341101946083}
   velocity: {x: 0, y: 0, z: 0}
   swingDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &8548567910301610074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765502167902398777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1b3b348739042479d83c09aac77aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.SaberTrail
+  tipPoint: {fileID: 4136626170025349936}
+  basePoint: {fileID: 6356479883646011699}
+  trailLength: 20
+  trailTime: 0.08
+  trailMaterial: {fileID: 0}
 --- !u!96 &-3149922341101946083
 TrailRenderer:
   serializedVersion: 4
@@ -313,6 +332,37 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &4524268975042467483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356479883646011699}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356479883646011699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524268975042467483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8909830476355049530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4948368670699647739
 GameObject:
   m_ObjectHideFlags: 0

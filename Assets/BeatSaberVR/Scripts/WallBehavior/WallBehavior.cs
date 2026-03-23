@@ -11,11 +11,11 @@ namespace BeatSaberVR
         }
 
         // Player's collider triggers this if they don't dodge
-        void OnTriggerStay(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                //GameManager.Instance.RegisterWallHit();
+                GameManager.Instance.RegisterWallHit();
             }
         }
     }

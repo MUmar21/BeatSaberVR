@@ -32,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.072, y: -0.08068, z: 5.103}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 357571944797122730}
   - {fileID: 4129589260495465796}
@@ -51,9 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e25459c9c7d674e9ccab8ee7d64945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockBehavior
+  directionPoint: {fileID: 357571944797122730}
+  defaultPoint: {fileID: 9125309434282968892}
+  halfLeftPrefab: {fileID: 0}
+  halfRightPrefab: {fileID: 0}
+  halfTopPrefab: {fileID: 0}
+  halfBottomPrefab: {fileID: 0}
   blockColor: 0
   cutDirection: 0
-  directionPoint: {fileID: 357571944797122730}
   speed: 10
 --- !u!114 &-4655861468180660384
 MonoBehaviour:
