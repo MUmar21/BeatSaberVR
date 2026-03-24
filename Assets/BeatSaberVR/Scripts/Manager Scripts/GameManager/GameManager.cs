@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace BeatSaberVR
 {
     public enum BlockColor { Red, Blue }   // Left = Red, Right = Blue
@@ -10,15 +8,10 @@ namespace BeatSaberVR
         private int score = 0;
         private int combo = 0;
 
-
-        [SerializeField] private GameObject completeXROriginSetUpHandsVariant;
-
         public bool GameplayStarted { get; set; }
 
         private void OnEnable()
         {
-            //completeXROriginSetUpHandsVariant.SetActive(false);
-
             BeatSaberVREvents.OnGameStart += StartGame;
             BeatSaberVREvents.OnGameplayEnd += EndGameplay;
         }
@@ -54,13 +47,11 @@ namespace BeatSaberVR
             ResetGameProps();
             UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
             GameplayStarted = true;
-            //completeXROriginSetUpHandsVariant.SetActive(true);
         }
 
         private void EndGameplay()
         {
             GameplayStarted = false;
-           // completeXROriginSetUpHandsVariant.SetActive(false);
         }
 
         private void ResetGameProps()
