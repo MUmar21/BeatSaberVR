@@ -8,7 +8,7 @@ namespace BeatSaberVR
         private static readonly float[] colX = { -0.9f, -0.3f, 0.3f, 0.9f };
 
         // 3 rows: bottom to top
-        private static readonly float[] rowY = { 0.5f, 1.1f, 1.7f };
+        private static readonly float[] rowY = { 1f, 1.3f, 1.6f };
 
         public static Vector3 GridToWorld(int col, int row, float zDepth)
         {

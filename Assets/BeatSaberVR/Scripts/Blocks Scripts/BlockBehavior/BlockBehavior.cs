@@ -7,7 +7,6 @@ namespace BeatSaberVR
         [Header("References")]
         public Transform directionPoint;
         public GameObject defaultPoint;
-        public GameObject cutParticlesPrefab;
 
         [Header("Block Settings")]
         public BlockColor blockColor;
@@ -16,7 +15,7 @@ namespace BeatSaberVR
         private bool wasHit = false;
 
         // Minimum saber speed to count as a real swing (not accidental graze)
-        private const float MIN_SWING_SPEED = 0f;
+        private const float MIN_SWING_SPEED = 1f;
 
         private void OnEnable()
         {

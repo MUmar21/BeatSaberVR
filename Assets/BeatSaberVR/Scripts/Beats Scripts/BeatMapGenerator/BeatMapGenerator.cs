@@ -15,144 +15,237 @@ namespace BeatSaberVR
         public float bpm = 128f;
         public float noteJumpSpeed = 10f;
 
-        [Header("Difficulty")]
-        [Range(0.1f, 1f)]
-        public float noteDensity = 0.4f;
-        public int subdivision = 2;   // 1=quarter, 2=eighth, 4=sixteenth
+        [Header("Beat Detection")]
+        [Tooltip("Window size for energy analysis — smaller = more sensitive")]
+        public int windowSize = 1024;
+        [Tooltip("How much louder than average a window must be to count as a beat")]
+        [Range(1.1f, 3f)]
+        public float beatThreshold = 1.4f;
+        [Tooltip("Minimum seconds between any two detected beats")]
+        public float minBeatGap = 0.35f;
+
+        [Header("Note Spacing")]
+        [Tooltip("Minimum seconds between notes of the SAME hand")]
+        public float minSameHandGap = 0.6f;
+        [Tooltip("Minimum seconds between ANY two notes (prevents visual overlap)")]
+        public float minAnyNoteGap = 0.35f;
+        [Tooltip("Chance 0-1 that a detected beat actually becomes a note")]
+        [Range(0.3f, 1f)]
+        public float noteDensity = 0.75f;
+
+        [Header("Walls")]
+        [Range(0f, 1f)]
+        [Tooltip("Chance per eligible beat that a wall spawns")]
+        public float wallChance = 0.12f;
+        [Tooltip("Minimum seconds between walls")]
+        public float minWallGap = 6f;
+        [Tooltip("Only spawn walls on strong beats (high energy)")]
+        public float wallEnergyMinRatio = 1.6f;
+
+        [Header("Cut Direction Sync")]
+        [Tooltip("Sync cut directions to beat position in measure")]
+        public bool syncDirectionsToBeats = true;
+        [Range(0f, 1f)]
+        [Tooltip("How strongly beat energy influences direction (0=random, 1=fully synced)")]
+        public float directionSyncStrength = 0.8f;
 
         [Header("Padding")]
-        public float startPadding = 8f;  // must be >= approachOffset (spawnDist/jumpSpeed)
+        public float startPadding = 8f;
         public float endPadding = 3f;
 
-        // Each pattern = sequence of (col, row, color, dir) for left then right hand
-        // color: 0=Left/Red, 1=Right/Blue
-        private static readonly int[,] patterns = new int[,]
-        {
-            // { leftCol, leftRow, leftDir,  rightCol, rightRow, rightDir }
-            // dir: 0=up, 1=down, 2=left, 3=right, 4=any
-            { 0, 1, 3,   3, 1, 2 },   // left-right sweep
-            { 1, 1, 0,   2, 1, 0 },   // both up center
-            { 0, 0, 0,   3, 0, 0 },   // both low corners up
-            { 1, 2, 1,   2, 2, 1 },   // both high center down
-            { 0, 1, 3,   2, 1, 3 },   // both sweep right
-            { 1, 1, 2,   3, 1, 2 },   // both sweep left
-            { 0, 0, 3,   3, 2, 2 },   // diagonal cross
-            { 1, 0, 0,   2, 2, 1 },   // vertical opposites
-            { 0, 2, 1,   3, 2, 1 },   // both high down
-            { 1, 1, 4,   2, 1, 4 },   // dot blocks center
-            { 0, 1, 0,   3, 1, 0 },   // wide up
-            { 1, 0, 3,   2, 2, 2 },   // cross sweep
+        // Lane pools
+        private static readonly int[,] leftHandLanes = {
+            { 0, 0 }, { 0, 1 }, { 0, 2 },
+            { 1, 0 }, { 1, 1 }, { 1, 2 }
+        };
+        private static readonly int[,] rightHandLanes = {
+            { 2, 0 }, { 2, 1 }, { 2, 2 },
+            { 3, 0 }, { 3, 1 }, { 3, 2 }
         };
 
         [ContextMenu("Generate Into ScriptableObject")]
         public void Generate()
         {
             if (targetBeatMap == null || songClip == null)
+            { Debug.LogError("Assign BeatMapSO and AudioClip."); return; }
+
+            // ── Step 1: Extract and convert to mono ────────────────
+            float[] samples = new float[songClip.samples * songClip.channels];
+            songClip.GetData(samples, 0);
+
+            int channels = songClip.channels;
+            int sampleRate = songClip.frequency;
+            float songLength = songClip.length;
+            int monoLength = songClip.samples;
+
+            float[] mono = new float[monoLength];
+            for (int i = 0; i < monoLength; i++)
             {
-                Debug.LogError("Assign BeatMapSO and AudioClip first."); return;
+                float s = 0f;
+                for (int c = 0; c < channels; c++) s += samples[i * channels + c];
+                mono[i] = s / channels;
             }
 
-            System.Random rng = new System.Random(42);
-            float songLength = songClip.length;
-            float secondsPerBeat = 60f / bpm;
-            float secondsPerStep = secondsPerBeat / subdivision;
-            int totalSteps = Mathf.FloorToInt(songLength / secondsPerStep);
+            // ── Step 2: RMS energy per window ──────────────────────
+            int numWindows = monoLength / windowSize;
+            float[] energy = new float[numWindows];
 
-            List<NoteData> notes = new List<NoteData>();
-            List<ObstacleData> obstacles = new List<ObstacleData>();
-
-            // Minimum gap between notes of same hand = 1 full beat
-            float minGap = secondsPerBeat;
-            float lastLeftTime = -99f;
-            float lastRightTime = -99f;
-            float lastObsTime = -99f;
-            int lastPattern = -1;
-
-            for (int step = 0; step < totalSteps; step++)
+            for (int w = 0; w < numWindows; w++)
             {
-                float time = step * secondsPerStep;
+                float s = 0f;
+                int off = w * windowSize;
+                for (int i = off; i < off + windowSize && i < monoLength; i++)
+                    s += mono[i] * mono[i];
+                energy[w] = Mathf.Sqrt(s / windowSize);
+            }
 
-                if (time < startPadding) continue;
-                if (time > songLength - endPadding) continue;
+            // ── Step 3: Rolling average energy ─────────────────────
+            int hist = Mathf.Max(1, Mathf.RoundToInt((float)sampleRate / windowSize));
+            float[] avgEnergy = new float[numWindows];
 
-                bool leftReady = time - lastLeftTime >= minGap;
-                bool rightReady = time - lastRightTime >= minGap;
+            for (int w = 0; w < numWindows; w++)
+            {
+                int from = Mathf.Max(0, w - hist);
+                int to = Mathf.Min(numWindows - 1, w + hist);
+                float s = 0f;
+                for (int i = from; i <= to; i++) s += energy[i];
+                avgEnergy[w] = s / (to - from + 1);
+            }
+
+            // ── Step 4: Detect beats with energy context ────────────
+            var beatList = new List<(float time, float ratio, float delta)>();
+            float lastBeat = -99f;
+
+            for (int w = 1; w < numWindows - 1; w++)
+            {
+                float time = (float)(w * windowSize) / sampleRate;
+
+                if (time < startPadding || time > songLength - endPadding) continue;
+
+                bool isPeak = energy[w] > energy[w - 1] && energy[w] > energy[w + 1];
+                float ratio = avgEnergy[w] > 0 ? energy[w] / avgEnergy[w] : 0f;
+                bool aboveThres = ratio >= beatThreshold;
+                bool gapOk = time - lastBeat >= minBeatGap;
+
+                if (isPeak && aboveThres && gapOk)
+                {
+                    // Energy delta: positive = energy is rising into this beat
+                    float delta = energy[w] - energy[Mathf.Max(0, w - 2)];
+                    beatList.Add((time, ratio, delta));
+                    lastBeat = time;
+                }
+            }
+
+            Debug.Log($"Beat detection: {beatList.Count} beats in {songLength:F1}s");
+
+            // ── Step 5: Convert beats → notes ──────────────────────
+            var rng = new System.Random(42);
+            var notes = new List<NoteData>();
+            var obstacles = new List<ObstacleData>();
+
+            float lastLeftTime = -99f, lastRightTime = -99f, lastAnyTime = -99f;
+            float lastObsTime = -99f;
+            int lastLeftLane = -1, lastRightLane = -1;
+            float spb = 60f / bpm; // seconds per beat
+
+            for (int bi = 0; bi < beatList.Count; bi++)
+            {
+                var (beatTime, energyRatio, energyDelta) = beatList[bi];
+
+                if (rng.NextDouble() > noteDensity) continue;
+
+                bool leftReady = (beatTime - lastLeftTime >= minSameHandGap) &&
+                                  (beatTime - lastAnyTime >= minAnyNoteGap);
+                bool rightReady = (beatTime - lastRightTime >= minSameHandGap) &&
+                                  (beatTime - lastAnyTime >= minAnyNoteGap);
 
                 if (!leftReady && !rightReady) continue;
 
-                // Roll for this beat
-                if (rng.NextDouble() > noteDensity) continue;
+                // Beat position within a 4/4 measure (0=downbeat, 1=beat2, 2=beat3, 3=beat4)
+                int beatInMeasure = Mathf.FloorToInt((beatTime / spb) % 4f);
 
-                // Pick a pattern different from the last one
-                int patternIdx;
-                do { patternIdx = rng.Next(0, patterns.GetLength(0)); }
-                while (patternIdx == lastPattern);
-                lastPattern = patternIdx;
+                int choice = rng.Next(0, 3); // 0=left only, 1=right only, 2=both
 
-                // ── Left hand note ────────────────────────────
-                if (leftReady)
+                // ── Left hand ──────────────────────────────────────
+                if (leftReady && (choice == 0 || choice == 2))
                 {
+                    int laneIdx;
+                    do { laneIdx = rng.Next(0, leftHandLanes.GetLength(0)); }
+                    while (laneIdx == lastLeftLane && leftHandLanes.GetLength(0) > 1);
+
+                    int col = leftHandLanes[laneIdx, 0];
+                    int row = leftHandLanes[laneIdx, 1];
+
                     notes.Add(new NoteData
                     {
-                        time = time,
-                        col = patterns[patternIdx, 0],
-                        row = patterns[patternIdx, 1],
+                        time = beatTime,
+                        col = col,
+                        row = row,
                         color = BlockColor.Red,
-                        cutDirection = (CutDirection)patterns[patternIdx, 2]
+                        cutDirection = GetSyncedDirection(
+                            row, beatInMeasure, energyRatio, energyDelta,
+                            isLeft: true, rng)
                     });
-                    lastLeftTime = time;
+                    lastLeftTime = beatTime;
+                    lastAnyTime = beatTime;
+                    lastLeftLane = laneIdx;
                 }
 
-                // ── Right hand note — staggered by half step ──
-                float rightTime = time + secondsPerStep * 0.5f;
-                if (rightReady && rightTime < songLength - endPadding)
+                // ── Right hand (staggered) ─────────────────────────
+                if (rightReady && (choice == 1 || choice == 2))
                 {
+                    float offset = (choice == 2) ? minAnyNoteGap : 0f;
+                    float rightTime = beatTime + offset;
+                    if (rightTime > songLength - endPadding) continue;
+
+                    // Beat position for the staggered time
+                    int rightBeatInMeasure = Mathf.FloorToInt((rightTime / spb) % 4f);
+
+                    int laneIdx;
+                    do { laneIdx = rng.Next(0, rightHandLanes.GetLength(0)); }
+                    while (laneIdx == lastRightLane && rightHandLanes.GetLength(0) > 1);
+
+                    int col = rightHandLanes[laneIdx, 0];
+                    int row = rightHandLanes[laneIdx, 1];
+
                     notes.Add(new NoteData
                     {
                         time = rightTime,
-                        col = patterns[patternIdx, 3],
-                        row = patterns[patternIdx, 4],
+                        col = col,
+                        row = row,
                         color = BlockColor.Blue,
-                        cutDirection = (CutDirection)patterns[patternIdx, 5]
+                        cutDirection = GetSyncedDirection(
+                            row, rightBeatInMeasure, energyRatio, energyDelta,
+                            isLeft: false, rng)
                     });
                     lastRightTime = rightTime;
+                    lastAnyTime = Mathf.Max(lastAnyTime, rightTime);
+                    lastRightLane = laneIdx;
                 }
 
-                // ── Solo left-only note occasionally ─────────
-                if (leftReady && rng.NextDouble() < 0.2f)
-                {
-                    float soloTime = time + secondsPerStep;
-                    if (soloTime - lastLeftTime >= minGap &&
-                        soloTime < songLength - endPadding)
-                    {
-                        int soloCol = rng.Next(0, 4);
-                        int soloRow = rng.NextDouble() < 0.5 ? 1 : (rng.NextDouble() < 0.5 ? 0 : 2);
-                        notes.Add(new NoteData
-                        {
-                            time = soloTime,
-                            col = soloCol,
-                            row = soloRow,
-                            color = BlockColor.Red,
-                            cutDirection = (CutDirection)rng.Next(0, 5)
-                        });
-                        lastLeftTime = soloTime;
-                    }
-                }
+                // ── Walls ──────────────────────────────────────────
+                bool noteNearby = Mathf.Abs(lastLeftTime - beatTime) < 0.4f ||
+                                    Mathf.Abs(lastRightTime - beatTime) < 0.4f;
+                bool strongEnough = energyRatio >= wallEnergyMinRatio;
+                bool wallGapOk = beatTime - lastObsTime >= minWallGap;
 
-                // ── Walls (only when no blocks nearby) ───────
-                bool blocksFiring = Mathf.Abs(lastLeftTime - time) < 0.2f ||
-                                    Mathf.Abs(lastRightTime - time) < 0.2f;
-
-                if (!blocksFiring && time - lastObsTime > 8f && rng.NextDouble() < 0.1f)
+                if (!noteNearby && strongEnough && wallGapOk &&
+                    rng.NextDouble() < wallChance)
                 {
+                    bool wallOnLeft = lastRightTime > lastLeftTime;
+                    int wallCol = wallOnLeft ? 0 : 2;
+
                     obstacles.Add(new ObstacleData
                     {
-                        time = time,
-                        col = rng.NextDouble() < 0.5 ? 0 : 2,
-                        width = 1,
-                        duration = 0.5f
+                        time = beatTime,
+                        col = wallCol,
+                        width = 2,
+                        duration = Mathf.Max(0.3f, 60f / bpm * 0.5f) // half a beat long
                     });
-                    lastObsTime = time;
+                    lastObsTime = beatTime;
+
+                    Debug.Log($"Wall at t={beatTime:F2}s  energyRatio={energyRatio:F2}  " +
+                              $"side={(wallOnLeft ? "left" : "right")}");
                 }
             }
 
@@ -168,9 +261,68 @@ namespace BeatSaberVR
 #if UNITY_EDITOR
             EditorUtility.SetDirty(targetBeatMap);
             AssetDatabase.SaveAssets();
-            Debug.Log($"Generated {notes.Count} notes + {obstacles.Count} walls. " +
-                      $"Song: {songLength:F0}s at {bpm}BPM. startPadding={startPadding}s");
+            Debug.Log($"Generated {notes.Count} notes + {obstacles.Count} walls " +
+                      $"from {beatList.Count} beats. " +
+                      $"minSameHand={minSameHandGap:F2}s  minAny={minAnyNoteGap:F2}s");
 #endif
+        }
+
+        // ── Beat-synced direction logic ─────────────────────────────
+        CutDirection GetSyncedDirection(
+            int row, int beatInMeasure, float energyRatio,
+            float energyDelta, bool isLeft, System.Random rng)
+        {
+            // If sync is disabled or random roll fails, use row-based natural direction
+            if (!syncDirectionsToBeats || rng.NextDouble() > directionSyncStrength)
+                return NaturalDirection(row, rng);
+
+            // ── Rule 1: Beat position in measure ─────────────────
+            CutDirection measureDir = beatInMeasure switch
+            {
+                0 => CutDirection.Down,   // beat 1 — strongest, punch down
+                1 => CutDirection.Up,     // beat 2 — lift up
+                2 => CutDirection.Down,   // beat 3 — strong again
+                _ => CutDirection.Up      // beat 4 — anticipation, lift
+            };
+
+            // ── Rule 2: Energy direction (rising vs falling) ──────
+            CutDirection energyDir;
+            if (Mathf.Abs(energyDelta) < 0.001f)
+            {
+                // Flat energy — use measure position
+                energyDir = measureDir;
+            }
+            else
+            {
+                energyDir = energyDelta > 0 ? CutDirection.Up : CutDirection.Down;
+            }
+
+            // ── Rule 3: Hand mirroring ────────────────────────────
+            if (beatInMeasure == 0 || beatInMeasure == 2) // strong beats
+            {
+                return isLeft ? CutDirection.Right : CutDirection.Left;
+            }
+
+            // ── Rule 4: Very high energy = dot block ─────────────
+            if (energyRatio > 2.2f)
+                return CutDirection.Any;
+
+            // ── Blend energy direction with measure direction ─────
+            if (energyDir == measureDir)
+                return energyDir;
+            else
+                return measureDir;
+        }
+
+        CutDirection NaturalDirection(int row, System.Random rng)
+        {
+            CutDirection[] rowDirs = {
+                CutDirection.Up,
+                CutDirection.Any,
+                CutDirection.Down
+            };
+            if (rng.NextDouble() < 0.7f) return rowDirs[row];
+            return (CutDirection)rng.Next(0, 5);
         }
     }
 }

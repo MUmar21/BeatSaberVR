@@ -53,13 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BlockBehavior
   directionPoint: {fileID: 357571944797122730}
   defaultPoint: {fileID: 9125309434282968892}
-  halfLeftPrefab: {fileID: 0}
-  halfRightPrefab: {fileID: 0}
-  halfTopPrefab: {fileID: 0}
-  halfBottomPrefab: {fileID: 0}
   blockColor: 0
   cutDirection: 0
-  speed: 10
+  speed: 15
 --- !u!114 &-4655861468180660384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,8 +69,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
   duration: 0.3
-  overshoot: 1.15
-  jumpHeight: 0.15
+  overshoot: 1.2
+  shootDistance: 0.8
+  shootCurve: 3
+  startTiltX: 25
+  startTiltZ: 15
 --- !u!33 &364808709768325831
 MeshFilter:
   m_ObjectHideFlags: 0

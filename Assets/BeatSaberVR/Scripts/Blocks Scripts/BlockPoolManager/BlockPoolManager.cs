@@ -135,6 +135,38 @@ namespace BeatSaberVR
             }
         }
 
+        public void ReturnAllActive()
+        {
+            var activeBlocks = FindObjectsByType<BlockBehavior>(FindObjectsSortMode.None);
+            foreach (var block in activeBlocks)
+            {
+                if (block.gameObject.activeSelf)
+                {
+                    block.StopAllCoroutines();
+                    ReturnBlock(block);
+                }
+            }
+
+            var activeWalls = FindObjectsByType<WallBehavior>(FindObjectsSortMode.None);
+            foreach (var wall in activeWalls)
+            {
+                if (wall.gameObject.activeSelf)
+                    ReturnWall(wall);
+            }
+
+            var activeHalves = FindObjectsByType<BlockCutEffect>(FindObjectsSortMode.None);
+            foreach (var half in activeHalves)
+            {
+                if (half.gameObject.activeSelf)
+                {
+                    half.StopAllCoroutines();
+                    half.gameObject.SetActive(false);
+                }
+            }
+
+            Debug.Log("BlockPoolManager: All active objects returned for replay.");
+        }
+
         // ── Particles ──────────────────────────────────────────
         public void PlayCutParticle(Vector3 position, BlockColor color)
         {

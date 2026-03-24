@@ -14,26 +14,43 @@ namespace BeatSaberVR
         public float spawnDistance = 25f;
         public float noteJumpSpeed = 10f;
 
-        // How many seconds ahead to look for notes to spawn
-        // Slightly larger than approachOffset to never miss a note
-        private const float LOOKAHEAD = 0.1f;
-
         private float approachOffset;
-        private int noteIndex = 0;   // cursor into beatMap.notes list
-        private int obstacleIndex = 0;   // cursor into beatMap.obstacles list
+        private int noteIndex = 0;
+        private int obstacleIndex = 0;
         private bool isPlaying = false;
 
-        void Start()
+        private void OnEnable()
+        {
+            BeatSaberVREvents.OnGameStart += StartPlaying;
+        }
+
+        private void OnDisable()
+        {
+            BeatSaberVREvents.OnGameStart -= StartPlaying;
+        }
+
+        private void StartPlaying()
         {
             if (beatMap == null) { Debug.LogError("No BeatMap assigned!"); return; }
 
-            approachOffset = spawnDistance / noteJumpSpeed;
+            // ── CRITICAL: full reset before every play/replay ──────
+            StopAllCoroutines();
+            audioSource.Stop();
 
+            noteIndex = 0;
+            obstacleIndex = 0;
+            isPlaying = false;
+
+            approachOffset = spawnDistance / noteJumpSpeed;
             audioSource.clip = beatMap.songClip;
+
+            // Return all active blocks to pool so scene is clean
+            BlockPoolManager.Instance.ReturnAllActive();
+
             StartCoroutine(StartWithDelay(0.1f));
         }
 
-        IEnumerator StartWithDelay(float delay)
+        private IEnumerator StartWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
             audioSource.Play();
@@ -42,58 +59,66 @@ namespace BeatSaberVR
                       $"approachOffset={approachOffset:F2}s");
         }
 
-        void Update()
+        private void Update()
         {
+            if (!GameManager.Instance.GameplayStarted) return;
             if (!isPlaying) return;
 
             float songTime = audioSource.time;
-            float spawnThreshold = songTime + approachOffset + LOOKAHEAD;
 
-            // ── Notes (index walk — O(1) per frame, no Queue allocation) ──
-            while (noteIndex < beatMap.notes.Count)
-            {
-                NoteData note = beatMap.notes[noteIndex];
-
-                if (note.time - approachOffset <= songTime)
-                {
-                    blockSpawner.SpawnBlock(note.col, note.row, note.color, note.cutDirection);
-                    noteIndex++;
-                }
-                else break; // list is sorted — nothing further is ready
-            }
-
-            // ── Obstacles ──
+            // ── Notes ──────────────────────────────────────────────
             while (noteIndex < beatMap.notes.Count)
             {
                 NoteData note = beatMap.notes[noteIndex];
                 float spawnAt = note.time - approachOffset;
 
-                if (spawnAt < 0f)
-                {
-                    noteIndex++;
-                    continue;
-                }
+                if (spawnAt < 0f) { noteIndex++; continue; }
 
                 if (spawnAt <= songTime)
                 {
-                    blockSpawner.SpawnBlock(note.col, note.row, note.color, note.cutDirection);
+                    blockSpawner.SpawnBlock(note.col, note.row,
+                                            note.color, note.cutDirection);
                     noteIndex++;
                 }
                 else break;
             }
 
-            // ── End of song ──
+            // ── Obstacles ──────────────────────────────────────────
+            while (obstacleIndex < beatMap.obstacles.Count)
+            {
+                ObstacleData obs = beatMap.obstacles[obstacleIndex];
+                float spawnAt = obs.time - approachOffset;
+
+                if (spawnAt < 0f) { obstacleIndex++; continue; }
+
+                if (spawnAt <= songTime)
+                {
+                    blockSpawner.SpawnWall(obs.col, obs.width, spawnDistance);
+                    obstacleIndex++;
+                }
+                else break;
+            }
+
+            // ── End of song ────────────────────────────────────────
             if (!audioSource.isPlaying &&
                 noteIndex >= beatMap.notes.Count &&
                 obstacleIndex >= beatMap.obstacles.Count)
             {
                 isPlaying = false;
+                BeatSaberVREvents.OnGameplayEnd?.Invoke();
                 Debug.Log("Song complete.");
             }
         }
 
         public void Pause() { audioSource.Pause(); isPlaying = false; }
         public void Resume() { audioSource.UnPause(); isPlaying = true; }
-        public void Stop() { audioSource.Stop(); isPlaying = false; noteIndex = 0; obstacleIndex = 0; }
+
+        public void Stop()
+        {
+            audioSource.Stop();
+            isPlaying = false;
+            noteIndex = 0;
+            obstacleIndex = 0;
+        }
     }
 }
