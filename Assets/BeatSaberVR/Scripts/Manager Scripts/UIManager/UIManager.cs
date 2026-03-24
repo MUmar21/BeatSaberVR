@@ -21,6 +21,8 @@ namespace BeatSaberVR
             startPanel.SetActive(true);
             gameOverPanel.SetActive(false);
             if (wallHitEffect != null) wallHitEffect.alpha = 0f;
+
+            OnStart();
         }
 
         private void OnEnable()

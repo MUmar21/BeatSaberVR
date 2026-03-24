@@ -17,7 +17,7 @@ namespace BeatSaberVR
 
         private void OnEnable()
         {
-            completeXROriginSetUpHandsVariant.SetActive(false);
+            //completeXROriginSetUpHandsVariant.SetActive(false);
 
             BeatSaberVREvents.OnGameStart += StartGame;
             BeatSaberVREvents.OnGameplayEnd += EndGameplay;
@@ -54,13 +54,13 @@ namespace BeatSaberVR
             ResetGameProps();
             UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
             GameplayStarted = true;
-            completeXROriginSetUpHandsVariant.SetActive(true);
+            //completeXROriginSetUpHandsVariant.SetActive(true);
         }
 
         private void EndGameplay()
         {
             GameplayStarted = false;
-            completeXROriginSetUpHandsVariant.SetActive(false);
+           // completeXROriginSetUpHandsVariant.SetActive(false);
         }
 
         private void ResetGameProps()
