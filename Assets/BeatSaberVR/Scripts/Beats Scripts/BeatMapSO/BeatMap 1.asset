@@ -78,399 +78,355 @@ MonoBehaviour:
     color: 1
     cutDirection: 2
   - time: 21.803537
-    col: 0
-    row: 0
+    col: 1
+    row: 1
     color: 0
     cutDirection: 3
-  - time: 22.153538
-    col: 2
-    row: 0
-    color: 1
-    cutDirection: 0
   - time: 23.730793
-    col: 1
-    row: 1
-    color: 0
-    cutDirection: 3
+    col: 2
+    row: 2
+    color: 1
+    cutDirection: 2
   - time: 24.706032
-    col: 1
-    row: 2
-    color: 0
-    cutDirection: 3
-  - time: 25.056032
-    col: 2
-    row: 2
-    color: 1
-    cutDirection: 0
-  - time: 25.68127
-    col: 0
-    row: 2
-    color: 0
-    cutDirection: 3
-  - time: 26.958366
-    col: 1
-    row: 2
-    color: 0
-    cutDirection: 0
-  - time: 28.444445
-    col: 0
-    row: 1
-    color: 0
-    cutDirection: 3
-  - time: 28.794445
-    col: 2
-    row: 0
-    color: 1
-    cutDirection: 4
-  - time: 29.535782
     col: 0
     row: 0
     color: 0
-    cutDirection: 4
-  - time: 29.885782
-    col: 2
-    row: 1
-    color: 1
-    cutDirection: 4
-  - time: 33.576054
+    cutDirection: 3
+  - time: 25.543652
     col: 3
     row: 2
     color: 1
+    cutDirection: 2
+  - time: 26.958366
+    col: 2
+    row: 0
+    color: 1
+    cutDirection: 0
+  - time: 28.908844
+    col: 1
+    row: 2
+    color: 0
+    cutDirection: 0
+  - time: 30.023401
+    col: 0
+    row: 1
+    color: 0
+    cutDirection: 3
+  - time: 30.373402
+    col: 2
+    row: 2
+    color: 1
+    cutDirection: 2
+  - time: 31.509478
+    col: 1
+    row: 0
+    color: 0
     cutDirection: 4
   - time: 34.551292
+    col: 3
+    row: 2
+    color: 1
+    cutDirection: 0
+  - time: 36.17669
     col: 0
     row: 1
     color: 0
     cutDirection: 0
-  - time: 35.03891
+  - time: 36.641087
     col: 2
     row: 2
     color: 1
     cutDirection: 2
-  - time: 36.17669
+  - time: 37.778866
     col: 1
     row: 1
     color: 0
     cutDirection: 4
-  - time: 36.991085
+  - time: 38.429024
+    col: 1
+    row: 2
+    color: 0
+    cutDirection: 0
+  - time: 38.779022
     col: 3
     row: 2
     color: 1
-    cutDirection: 2
-  - time: 38.429024
-    col: 3
-    row: 0
-    color: 1
-    cutDirection: 0
-  - time: 39.218502
+    cutDirection: 1
+  - time: 40.681362
     col: 0
     row: 1
     color: 0
-    cutDirection: 0
-  - time: 40.07934
-    col: 3
-    row: 2
-    color: 1
-    cutDirection: 0
+    cutDirection: 3
   - time: 41.33152
     col: 1
-    row: 0
+    row: 2
     color: 0
     cutDirection: 3
-  - time: 42.446075
+  - time: 41.68152
+    col: 2
+    row: 0
+    color: 1
+    cutDirection: 0
+  - time: 43.955376
     col: 2
     row: 2
     color: 1
     cutDirection: 1
-  - time: 42.933697
+  - time: 44.373333
     col: 0
     row: 2
     color: 0
-    cutDirection: 0
-  - time: 44.373333
+    cutDirection: 3
+  - time: 46.18449
     col: 0
     row: 0
     color: 0
     cutDirection: 3
-  - time: 46.18449
+  - time: 48.413605
     col: 2
     row: 0
     color: 1
     cutDirection: 4
-  - time: 47.20617
+  - time: 51.87338
     col: 3
     row: 0
     color: 1
-    cutDirection: 2
-  - time: 49.551384
-    col: 3
-    row: 1
-    color: 1
     cutDirection: 0
-  - time: 51.0839
+  - time: 53.568436
     col: 0
     row: 1
     color: 0
     cutDirection: 4
-  - time: 51.478638
+  - time: 54.032833
     col: 3
-    row: 2
+    row: 1
     color: 1
-    cutDirection: 0
-  - time: 52.871838
-    col: 1
-    row: 2
-    color: 0
-    cutDirection: 3
-  - time: 53.221836
-    col: 3
-    row: 0
-    color: 1
-    cutDirection: 0
+    cutDirection: 4
   - time: 55.193832
-    col: 0
+    col: 1
     row: 2
     color: 0
     cutDirection: 0
   - time: 55.54383
     col: 3
-    row: 1
+    row: 0
     color: 1
     cutDirection: 2
   - time: 57.539047
     col: 0
-    row: 0
+    row: 2
     color: 0
     cutDirection: 3
   - time: 57.889046
-    col: 2
+    col: 3
     row: 1
     color: 1
     cutDirection: 0
-  - time: 58.746487
+  - time: 59.861042
+    col: 0
+    row: 0
+    color: 0
+    cutDirection: 4
+  - time: 60.21104
+    col: 2
+    row: 1
+    color: 1
+    cutDirection: 2
+  - time: 60.83628
     col: 1
     row: 2
     color: 0
     cutDirection: 0
-  - time: 59.187664
+  - time: 61.39356
     col: 3
     row: 1
     color: 1
     cutDirection: 2
-  - time: 60.348663
+  - time: 62.600998
     col: 0
     row: 1
     color: 0
-    cutDirection: 3
-  - time: 60.69866
+    cutDirection: 0
+  - time: 62.950996
     col: 3
     row: 2
     color: 1
-    cutDirection: 4
-  - time: 61.39356
+    cutDirection: 2
+  - time: 65.03909
     col: 0
     row: 0
     color: 0
     cutDirection: 3
-  - time: 61.743557
+  - time: 65.38909
     col: 2
     row: 1
     color: 1
     cutDirection: 4
-  - time: 62.600998
+  - time: 65.99111
     col: 2
     row: 0
-    color: 1
-    cutDirection: 0
-  - time: 65.99111
-    col: 1
-    row: 1
-    color: 0
-    cutDirection: 3
-  - time: 66.34111
-    col: 2
-    row: 2
     color: 1
     cutDirection: 0
   - time: 68.28989
+    col: 1
+    row: 1
+    color: 0
+    cutDirection: 0
+  - time: 68.639885
+    col: 2
+    row: 2
+    color: 1
+    cutDirection: 2
+  - time: 70.193924
     col: 2
     row: 1
     color: 1
-    cutDirection: 0
-  - time: 69.8224
-    col: 2
-    row: 0
-    color: 1
-    cutDirection: 2
-  - time: 70.84408
-    col: 0
-    row: 2
-    color: 0
-    cutDirection: 0
-  - time: 71.19408
-    col: 3
-    row: 0
-    color: 1
-    cutDirection: 0
+    cutDirection: 4
   - time: 72.28372
     col: 2
     row: 0
     color: 1
-    cutDirection: 0
+    cutDirection: 2
   - time: 73.44472
+    col: 0
+    row: 2
+    color: 0
+    cutDirection: 3
+  - time: 73.794716
     col: 3
     row: 0
     color: 1
     cutDirection: 0
   - time: 74.86114
     col: 2
-    row: 1
+    row: 0
+    color: 1
+    cutDirection: 0
+  - time: 75.99891
+    col: 3
+    row: 0
     color: 1
     cutDirection: 0
   - time: 77.46177
+    col: 2
+    row: 1
+    color: 1
+    cutDirection: 0
+  - time: 80.0624
     col: 3
     row: 2
     color: 1
-    cutDirection: 0
-  - time: 77.92617
+    cutDirection: 2
+  - time: 80.503586
     col: 1
     row: 0
     color: 0
     cutDirection: 0
-  - time: 78.576324
+  - time: 81.15374
     col: 3
     row: 1
     color: 1
-    cutDirection: 0
-  - time: 81.15374
+    cutDirection: 4
+  - time: 83.731155
     col: 2
     row: 2
     color: 1
-    cutDirection: 4
-  - time: 82.6166
+    cutDirection: 2
+  - time: 85.194016
     col: 1
     row: 2
     color: 0
-    cutDirection: 3
-  - time: 83.12744
+    cutDirection: 4
+  - time: 85.68163
     col: 3
     row: 1
     color: 1
-    cutDirection: 0
-  - time: 83.731155
-    col: 1
-    row: 1
-    color: 0
-    cutDirection: 3
+    cutDirection: 2
   - time: 86.16925
     col: 1
-    row: 2
+    row: 1
     color: 0
     cutDirection: 4
-  - time: 86.51925
+  - time: 88.25905
+    col: 1
+    row: 2
+    color: 0
+    cutDirection: 3
+  - time: 88.60905
     col: 3
     row: 0
     color: 1
     cutDirection: 0
-  - time: 87.14449
+  - time: 89.39683
     col: 1
     row: 0
     color: 0
     cutDirection: 0
-  - time: 87.60889
+  - time: 90.34885
     col: 2
     row: 0
     color: 1
     cutDirection: 2
-  - time: 88.25905
-    col: 0
-    row: 0
-    color: 0
-    cutDirection: 3
   - time: 90.836464
+    col: 0
+    row: 0
+    color: 0
+    cutDirection: 4
+  - time: 93.41388
     col: 3
     row: 1
     color: 1
     cutDirection: 4
-  - time: 91.95102
+  - time: 94.55166
     col: 1
     row: 0
     color: 0
-    cutDirection: 3
-  - time: 97.129074
+    cutDirection: 4
+  - time: 99.70648
     col: 3
     row: 2
     color: 1
-    cutDirection: 4
-  - time: 100.35664
+    cutDirection: 2
+  - time: 103.25914
     col: 1
     row: 2
     color: 0
     cutDirection: 1
-  - time: 100.70664
+  - time: 103.60914
     col: 3
     row: 1
     color: 1
     cutDirection: 4
-  - time: 101.16934
-    col: 0
-    row: 1
-    color: 0
-    cutDirection: 0
-  - time: 102.2839
-    col: 3
-    row: 2
-    color: 1
-    cutDirection: 1
-  - time: 103.76997
-    col: 0
-    row: 2
-    color: 0
-    cutDirection: 0
-  - time: 104.11997
-    col: 2
-    row: 0
-    color: 1
-    cutDirection: 0
   - time: 104.74522
-    col: 3
-    row: 0
-    color: 1
-    cutDirection: 0
-  - time: 105.18639
     col: 1
     row: 1
     color: 0
-    cutDirection: 3
-  - time: 105.743675
-    col: 2
-    row: 2
-    color: 1
     cutDirection: 0
-  - time: 107.27619
+  - time: 106.81179
     col: 0
     row: 2
     color: 0
-    cutDirection: 3
-  - time: 107.62619
+    cutDirection: 1
+  - time: 107.16179
+    col: 2
+    row: 0
+    color: 1
+    cutDirection: 0
+  - time: 108.50685
     col: 3
     row: 0
     color: 1
     cutDirection: 0
   obstacles:
-  - time: 4
-    col: 0
-    width: 2
+  - time: 3
+    col: -3
+    width: 1
     duration: 0.3
-  - time: 8
-    col: 1
-    width: 2
+  - time: 3
+    col: 3
+    width: 1
     duration: 0.3
   - time: 15
-    col: 0
-    width: 2
-    duration: 0.3
-  - time: 20
-    col: 0
+    col: 1
     width: 2
     duration: 0.3

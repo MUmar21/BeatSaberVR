@@ -6,5 +6,6 @@ namespace BeatSaberVR
     {
         public static Action OnGameStart;
         public static Action OnGameplayEnd;
+        public static Action<int> OnGameOver;
     }
 }

@@ -15,7 +15,10 @@ namespace BeatSaberVR
         private bool wasHit = false;
 
         // Minimum saber speed to count as a real swing (not accidental graze)
-        private const float MIN_SWING_SPEED = 1f;
+        private const float MIN_SWING_SPEED = 2.5f;
+
+        [Header("Editor Testing Mouse MIN_SWING_SPEED")]
+        [SerializeField] private float minSwingSpeed = 0.5f;
 
         private void OnEnable()
         {
@@ -45,7 +48,11 @@ namespace BeatSaberVR
             }
 
             bool colorMatch = saber.saberColor == blockColor;
-            bool fastEnough = saber.Speed > MIN_SWING_SPEED; // Must be swinging fast enough — not just resting on the block
+            bool fastEnough;
+
+            if (Application.isEditor) fastEnough = saber.Speed > minSwingSpeed;
+            else fastEnough = saber.Speed > MIN_SWING_SPEED; // Must be swinging fast enough — not just resting on the block
+
             bool directionCorrect = CheckDirection(saber.swingDirection);
 
             if (colorMatch && fastEnough && directionCorrect)

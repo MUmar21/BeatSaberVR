@@ -28,10 +28,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightSaber Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2765502167902398777, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: saberColor
       value: 1
@@ -44,34 +40,6 @@ PrefabInstance:
       propertyPath: trailMaterial
       value: 
       objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7313538
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.6819983
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 86

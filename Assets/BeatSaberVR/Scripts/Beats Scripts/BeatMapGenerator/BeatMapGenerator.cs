@@ -224,28 +224,61 @@ namespace BeatSaberVR
                 }
 
                 // ── Walls ──────────────────────────────────────────
-                bool noteNearby = Mathf.Abs(lastLeftTime - beatTime) < 0.4f ||
-                                    Mathf.Abs(lastRightTime - beatTime) < 0.4f;
-                bool strongEnough = energyRatio >= wallEnergyMinRatio;
-                bool wallGapOk = beatTime - lastObsTime >= minWallGap;
+                float clearWindow = spb * 1.5f; // 1.5 beats of clear space required
 
-                if (!noteNearby && strongEnough && wallGapOk &&
+                bool playerLaneClear = true;
+                foreach (var n in notes)
+                {
+                    if (Mathf.Abs(n.time - beatTime) < clearWindow)
+                    {
+                        playerLaneClear = false;
+                        break;
+                    }
+                }
+
+                if (playerLaneClear)
+                {
+                    for (int lookAhead = bi + 1;
+                         lookAhead < beatList.Count &&
+                         beatList[lookAhead].time - beatTime < clearWindow;
+                         lookAhead++)
+                    {
+                        playerLaneClear = false;
+                        break;
+                    }
+                }
+
+                bool wallGapOk = beatTime - lastObsTime >= minWallGap;
+                bool strongEnough = energyRatio >= wallEnergyMinRatio;
+
+                if (playerLaneClear && wallGapOk && strongEnough &&
                     rng.NextDouble() < wallChance)
                 {
-                    bool wallOnLeft = lastRightTime > lastLeftTime;
-                    int wallCol = wallOnLeft ? 0 : 2;
+                    bool col0Used = false, col3Used = false;
+                    foreach (var n in notes)
+                    {
+                        if (Mathf.Abs(n.time - beatTime) < spb * 2f)
+                        {
+                            if (n.col == 0 || n.col == 1) col0Used = true;
+                            if (n.col == 2 || n.col == 3) col3Used = true;
+                        }
+                    }
+
+                    int wallCol;
+                    if (col0Used && !col3Used) wallCol = 2; // right side free
+                    else if (col3Used && !col0Used) wallCol = 0; // left side free
+                    else wallCol = rng.NextDouble() < 0.5 ? 0 : 2;
 
                     obstacles.Add(new ObstacleData
                     {
                         time = beatTime,
                         col = wallCol,
                         width = 2,
-                        duration = Mathf.Max(0.3f, 60f / bpm * 0.5f) // half a beat long
+                        duration = spb * 2f
                     });
                     lastObsTime = beatTime;
 
-                    Debug.Log($"Wall at t={beatTime:F2}s  energyRatio={energyRatio:F2}  " +
-                              $"side={(wallOnLeft ? "left" : "right")}");
+                    Debug.Log($"Wall at t={beatTime:F2}s side={wallCol} energyRatio={energyRatio:F2}");
                 }
             }
 

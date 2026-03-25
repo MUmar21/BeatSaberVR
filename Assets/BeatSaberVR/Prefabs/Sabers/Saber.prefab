@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2569083990961398337}
   - component: {fileID: 1179759367146668337}
   - component: {fileID: 6145440489939483346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 885144038201315578}
   - component: {fileID: 2373768275388975079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,8 +116,8 @@ Transform:
   m_GameObject: {fileID: 2117575471236691030}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.5, z: 0.8}
+  m_LocalPosition: {x: 0, y: -0.321, z: 0}
+  m_LocalScale: {x: 0.03637348, y: 0.64811563, z: 0.040844213}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4136626170025349936}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 5063991017130269722}
   - component: {fileID: 8548567910301610074}
   - component: {fileID: -3149922341101946083}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Saber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,16 +170,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765502167902398777}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6819983, y: 0, z: 0, w: 0.7313538}
-  m_LocalPosition: {x: -0.02, y: 0.14, z: 2.134}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalRotation: {x: -0, y: 0.9914449, z: 0.13052624, w: 0}
+  m_LocalPosition: {x: -0, y: 0.389, z: 0.044}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2569083990961398337}
   - {fileID: 4136626170025349936}
   - {fileID: 6356479883646011699}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 86, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!114 &5063991017130269722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6356479883646011699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4136626170025349936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,8 +388,8 @@ Transform:
   m_GameObject: {fileID: 4948368670699647739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3483, z: -0}
-  m_LocalScale: {x: 0.05, y: 0.34999996, z: 0.050000004}
+  m_LocalPosition: {x: 0, y: 0.347, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 885144038201315578}

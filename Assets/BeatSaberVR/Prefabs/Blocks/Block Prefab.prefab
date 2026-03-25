@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3359399981754620412}
   - component: {fileID: 1124153380242176813}
   - component: {fileID: 7380265398946543205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 357571944797122730}
   - component: {fileID: 9130311654039966686}
   - component: {fileID: 2100761450448672262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 4129589260495465796}
   - component: {fileID: 7943451881266215290}
   - component: {fileID: 1816101326732852071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
