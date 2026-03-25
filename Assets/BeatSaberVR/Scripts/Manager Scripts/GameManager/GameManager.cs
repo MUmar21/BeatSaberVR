@@ -10,6 +10,8 @@ namespace BeatSaberVR
         private int score = 0;
         private int combo = 0;
 
+        [Header("For Testing")]
+        [SerializeField] private bool noGameOver = false;
         [Header("Energy Settings")]
         [SerializeField] private float maxEnergy = 100f;
         [SerializeField] private float startEnergy = 50f;
@@ -84,6 +86,8 @@ namespace BeatSaberVR
 
         private void CheckGameOver()
         {
+            if (noGameOver) return;
+
             if (currentEnergy <= gameOverThreshold)
                 TriggerGameOver();
         }

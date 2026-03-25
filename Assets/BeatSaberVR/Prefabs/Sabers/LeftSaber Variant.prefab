@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key0.g
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1769972136401219790, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: trailMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
     - target: {fileID: 2765502167902398777, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_Name
       value: LeftSaber Variant
@@ -30,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

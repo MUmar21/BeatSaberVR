@@ -12,9 +12,9 @@ namespace BeatSaberVR
         public BlockColor blockColor;
         public CutDirection cutDirection;
         public float speed = 10f;
-        private bool wasHit = false;
+        [HideInInspector] public bool isPaused = false;
 
-        // Minimum saber speed to count as a real swing (not accidental graze)
+        private bool wasHit = false;
         private const float MIN_SWING_SPEED = 2.5f;
 
         [Header("Editor Testing Mouse MIN_SWING_SPEED")]
@@ -27,6 +27,7 @@ namespace BeatSaberVR
 
         private void Update()
         {
+            if (isPaused) return;
             transform.Translate(Vector3.back * speed * Time.deltaTime);
 
             if (transform.position.z < -1.5f && !wasHit)
