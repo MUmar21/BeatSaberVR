@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BlueSword
-    second: {fileID: 2100000, guid: 2faf07c13a50e6846b36352be7258de9, type: 2}
+      name: MetalicSword
+    second: {fileID: 2100000, guid: c8883ad401c8b0547958fee4a4fb6a3a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalicSword
-    second: {fileID: 2100000, guid: a22309dcac44d0f45a2fe4b2ef5502c9, type: 2}
+      name: Sword1
+    second: {fileID: 2100000, guid: 735ca41ec45d75b4aa65f3abfacb208d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,7 +56,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
