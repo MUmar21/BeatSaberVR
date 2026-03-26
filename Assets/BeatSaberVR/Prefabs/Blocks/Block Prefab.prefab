@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3359399981754620412}
   - component: {fileID: 1124153380242176813}
   - component: {fileID: 7380265398946543205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.072, y: -0.08068, z: 5.103}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 357571944797122730}
   - {fileID: 4129589260495465796}
@@ -51,10 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e25459c9c7d674e9ccab8ee7d64945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockBehavior
+  directionPoint: {fileID: 357571944797122730}
+  defaultPoint: {fileID: 9125309434282968892}
   blockColor: 0
   cutDirection: 0
-  directionPoint: {fileID: 357571944797122730}
-  speed: 10
+  speed: 15
+  isPaused: 0
+  minSwingSpeed: 0.5
 --- !u!114 &-4655861468180660384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,9 +70,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281c541ebee4b9d42aac2f34ef30fa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
-  duration: 0.3
-  overshoot: 1.15
-  jumpHeight: 0.15
+  duration: 0.5
+  overshoot: 1.6
+  spawnDistance: 15
+  spawnVerticalOffset: -1.5
 --- !u!33 &364808709768325831
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -186,7 +190,7 @@ GameObject:
   - component: {fileID: 357571944797122730}
   - component: {fileID: 9130311654039966686}
   - component: {fileID: 2100761450448672262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +280,7 @@ GameObject:
   - component: {fileID: 4129589260495465796}
   - component: {fileID: 7943451881266215290}
   - component: {fileID: 1816101326732852071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

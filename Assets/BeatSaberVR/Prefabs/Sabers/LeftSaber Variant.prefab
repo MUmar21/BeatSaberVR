@@ -12,49 +12,37 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
+    - target: {fileID: -3149922341101946083, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3149922341101946083, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769972136401219790, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: trailMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
     - target: {fileID: 2765502167902398777, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_Name
       value: LeftSaber Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9763827
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.17216258
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.022665627
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.12854317
-      objectReference: {fileID: 0}
+    - target: {fileID: 8548567910301610074, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: trailMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

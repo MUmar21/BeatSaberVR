@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &464561538419302871
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 431760383055409618, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_Name
+      value: Blue Block Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.072
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096827229490999913, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: blockColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: halfTopPrefab
+      value: 
+      objectReference: {fileID: 8372121380677843965, guid: 7fbab791d9bad02439abd4b35505c48b, type: 3}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: halfLeftPrefab
+      value: 
+      objectReference: {fileID: 1764417268749320233, guid: 01b5130209660d143b9148ba2bfb9c79, type: 3}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: halfRightPrefab
+      value: 
+      objectReference: {fileID: 2085185141018422985, guid: 0e427ae80c3f1784490a320cda5b4627, type: 3}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: halfBottomPrefab
+      value: 
+      objectReference: {fileID: 6478571614925477847, guid: a360842aa72af5d49b58dba861f50695, type: 3}
+    - target: {fileID: 5785253047343245220, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
+      propertyPath: cutParticlesPrefab
+      value: 
+      objectReference: {fileID: 6167363315312465186, guid: 5aab22cc629a53b459e32a890b7caac9, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1a4877f7828771498e94c92571c9f76, type: 3}
