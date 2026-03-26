@@ -1,4 +1,4 @@
-using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +18,7 @@ namespace BeatSaberVR
         [SerializeField] private Button startButton;
         [SerializeField] private Button replayButton;
         [Header("Energy Bar")]
+        [SerializeField] private GameObject fillCanvas;
         [SerializeField] private Image energyBarFill;
         [Header("Game Over Panel")]
         [SerializeField] private TMP_Text finalScoreText;
@@ -28,8 +29,6 @@ namespace BeatSaberVR
         private const string SelectedSwordKey = "SelectedSword";
         string savedSword;
 
-        private Coroutine wallHitCoroutine;
-
         public override void Awake()
         {
             base.Awake();
@@ -39,6 +38,7 @@ namespace BeatSaberVR
 
         private void Start()
         {
+            ToggleInGameUI(false);
             startPanel.SetActive(true);
             swordSelectionPanel.SetActive(true);
             gameOverPanel.SetActive(false);
@@ -74,6 +74,7 @@ namespace BeatSaberVR
             if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             startPanel.SetActive(false);
             swordSelectionPanel.SetActive(false);
+            ToggleInGameUI(true);
             BeatSaberVREvents.OnGameStart?.Invoke();
         }
 
@@ -82,6 +83,7 @@ namespace BeatSaberVR
             if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             gameOverTitleText.text = "COMPLETE!";
             finalScoreText.text = $"Score: {GameManager.Instance.GetScore()}";
+            ToggleInGameUI(false);
             gameOverPanel.SetActive(true);
         }
 
@@ -91,6 +93,7 @@ namespace BeatSaberVR
             startPanel.SetActive(false);
             swordSelectionPanel.SetActive(false);
             gameOverPanel.SetActive(false);
+            ToggleInGameUI(true);
             BeatSaberVREvents.OnGameStart?.Invoke();
         }
 
@@ -104,37 +107,18 @@ namespace BeatSaberVR
         {
             if (wallHitEffect == null) return;
 
-            if (wallHitCoroutine != null)
-            {
-                StopCoroutine(wallHitCoroutine);
-                wallHitCoroutine = null;
-            }
-
             wallHitEffect.alpha = 1f;
-            wallHitCoroutine = StartCoroutine(PlayWallHitEffect());
+            PlayWallHitEffect();
         }
 
-        private IEnumerator PlayWallHitEffect()
+        private void PlayWallHitEffect()
         {
-            if (wallHitEffect == null)
-            {
-                yield break;
-            }
-
-            float duration = 1f;
-            float elapsed = 0f;
-            float startAlpha = wallHitEffect.alpha;
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / duration);
-                wallHitEffect.alpha = Mathf.Lerp(startAlpha, 0f, t);
-                yield return null;
-            }
-
-            wallHitEffect.alpha = 0f;
-            wallHitCoroutine = null;
+            if (wallHitEffect == null) return;
+            DOTween.Kill(wallHitEffect);
+            wallHitEffect.alpha = 1f;
+            wallHitEffect.DOFade(0f, 1.5f)
+                .SetEase((DG.Tweening.Ease)Ease.EaseInCubic)
+                .SetId(wallHitEffect);
         }
 
         public void UpdateEnergyBar(float normalizedValue)
@@ -149,6 +133,13 @@ namespace BeatSaberVR
             gameOverTitleText.text = "FAILED";
             finalScoreText.text = $"Score: {finalScore}";
             gameOverPanel.SetActive(true);
+        }
+
+        private void ToggleInGameUI(bool toggle)
+        {
+            scoreText.gameObject.SetActive(toggle);
+            comboText.gameObject.SetActive(toggle);
+            fillCanvas.gameObject.SetActive(toggle);
         }
 
         //-----Sword Selection-----

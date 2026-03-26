@@ -24,7 +24,7 @@ namespace BeatSaberVR
             if (wall == null) return;
 
             float wallWidth = width * 0.6f;
-            float leftEdge = -0.11f + col * 0.6f;
+            float leftEdge = -0.9f + col * 0.2f;
             float centerX = leftEdge + wallWidth * 0.5f;
             Vector3 pos = new Vector3(centerX, 1.4f, zDepth);
 
