@@ -32,6 +32,18 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 474040320361163810, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448378892123207304, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 478ea8422925d4e429ed6b1bfd4d60b2, type: 2}
+    - target: {fileID: 1448378892123207304, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735ca41ec45d75b4aa65f3abfacb208d, type: 2}
     - target: {fileID: 1664795827226766164, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -84,6 +96,10 @@ PrefabInstance:
       propertyPath: trailMaterial
       value: 
       objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
+    - target: {fileID: 8612269991664626358, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068

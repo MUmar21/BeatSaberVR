@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key0.g
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1448378892123207304, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 642feaba3a995c746930c4e19750a731, type: 2}
+    - target: {fileID: 1448378892123207304, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a3fb3c9f4b3356d4eb8aa692459f4eca, type: 2}
     - target: {fileID: 1769972136401219790, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: trailMaterial
       value: 
