@@ -97,6 +97,7 @@ namespace BeatSaberVR
             GameManager.Instance.AddScore(100);
             AudioManager.Instance.PlaySlash();
             BlockPoolManager.Instance.PlayCutParticle(transform.position, blockColor);
+            BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
             SpawnCutPieces(saber.velocity);
             ReturnToPool();
