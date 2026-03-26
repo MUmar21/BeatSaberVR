@@ -5,10 +5,10 @@ namespace BeatSaberVR
     {
         // 4 columns: spaced 0.6 units apart, centered at x=0
         // col 0 = far left, col 3 = far right
-        private static readonly float[] colX = { 0f, -0.3f, 0.3f, 0f };
+        private static readonly float[] colX = { -0.15f, -0.3f, 0.3f, 0.15f };
 
         // 3 rows: bottom to top
-        private static readonly float[] rowY = { 0.4f, 0.55f, 0.7f };
+        private static readonly float[] rowY = { 0.55f, 0.65f, 0.75f };
 
         public static Vector3 GridToWorld(int col, int row, float zDepth)
         {

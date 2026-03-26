@@ -224,19 +224,19 @@ MonoBehaviour:
     duration: 0.9375
   - time: 14.048073
     col: 0
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 20.66576
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 27.445986
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 33.576054
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 41.795918
     col: 2
@@ -248,11 +248,11 @@ MonoBehaviour:
     duration: 0.9375
   - time: 55.193832
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 71.30848
     col: 0
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 77.46177
     col: 0

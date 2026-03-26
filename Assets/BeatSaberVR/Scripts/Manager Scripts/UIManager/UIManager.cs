@@ -9,6 +9,7 @@ namespace BeatSaberVR
         [Header("Panels")]
         [SerializeField] private GameObject startPanel;
         [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject swordSelectionPanel;
         [SerializeField] private CanvasGroup wallHitEffect;
         [Header("Texts")]
         [SerializeField] private TMP_Text scoreText;
@@ -22,11 +23,24 @@ namespace BeatSaberVR
         [SerializeField] private TMP_Text finalScoreText;
         [SerializeField] private TMP_Text gameOverTitleText;
 
+        [Header("Sword Selection")]
+        [SerializeField] private SwordSelection swordSelection;
+        private const string SelectedSwordKey = "SelectedSword";
+        string savedSword;
+
         private Coroutine wallHitCoroutine;
+
+        public override void Awake()
+        {
+            base.Awake();
+            LoadSelectedSword();
+            UpdateSwordVisuals();
+        }
 
         private void Start()
         {
             startPanel.SetActive(true);
+            swordSelectionPanel.SetActive(true);
             gameOverPanel.SetActive(false);
             if (wallHitEffect != null) wallHitEffect.alpha = 0f;
         }
@@ -35,6 +49,9 @@ namespace BeatSaberVR
         {
             startButton.onClick.AddListener(OnStart);
             replayButton.onClick.AddListener(OnReplay);
+            swordSelection.navLeftButton.onClick.AddListener(NavigateLeft);
+            swordSelection.navRightButton.onClick.AddListener(NavigateRight);
+            swordSelection.selectButton.onClick.AddListener(SelectSword);
 
             BeatSaberVREvents.OnGameplayEnd += OnEnd;
             BeatSaberVREvents.OnGameOver += OnGameOverScreen;
@@ -44,6 +61,9 @@ namespace BeatSaberVR
         {
             startButton.onClick.RemoveListener(OnStart);
             replayButton.onClick.RemoveListener(OnReplay);
+            swordSelection.navLeftButton.onClick.RemoveListener(NavigateLeft);
+            swordSelection.navRightButton.onClick.RemoveListener(NavigateRight);
+            swordSelection.selectButton.onClick.RemoveListener(SelectSword);
 
             BeatSaberVREvents.OnGameplayEnd -= OnEnd;
             BeatSaberVREvents.OnGameOver -= OnGameOverScreen;
@@ -53,6 +73,7 @@ namespace BeatSaberVR
         {
             if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             startPanel.SetActive(false);
+            swordSelectionPanel.SetActive(false);
             BeatSaberVREvents.OnGameStart?.Invoke();
         }
 
@@ -68,6 +89,7 @@ namespace BeatSaberVR
         {
             if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             startPanel.SetActive(false);
+            swordSelectionPanel.SetActive(false);
             gameOverPanel.SetActive(false);
             BeatSaberVREvents.OnGameStart?.Invoke();
         }
@@ -128,5 +150,75 @@ namespace BeatSaberVR
             finalScoreText.text = $"Score: {finalScore}";
             gameOverPanel.SetActive(true);
         }
+
+        //-----Sword Selection-----
+        private void SelectSword()
+        {
+            Swords selectedSword = (Swords)swordSelection.currentIndex;
+            BeatSaberVREvents.OnSwordSelected?.Invoke(selectedSword);
+            swordSelection.selectedText.gameObject.SetActive(true);
+            PlayerPrefs.SetString(SelectedSwordKey, selectedSword.ToString());
+            savedSword = selectedSword.ToString();
+        }
+
+        private void NavigateLeft()
+        {
+            swordSelection.currentIndex--;
+            if (swordSelection.currentIndex < 0)
+                swordSelection.currentIndex = swordSelection.swordDatas.Length - 1;
+
+            UpdateSwordVisuals();
+        }
+
+        private void NavigateRight()
+        {
+            swordSelection.currentIndex++;
+            if (swordSelection.currentIndex >= swordSelection.swordDatas.Length)
+                swordSelection.currentIndex = 0;
+
+            UpdateSwordVisuals();
+        }
+
+        private void UpdateSwordVisuals()
+        {
+            if (swordSelection.swordDatas == null || swordSelection.swordDatas.Length == 0) return;
+
+            for (int i = 0; i < swordSelection.swordDatas.Length; i++)
+            {
+                if (swordSelection.swordDatas[i].gameObject != null)
+                {
+                    swordSelection.swordDatas[i].gameObject.SetActive(i == swordSelection.currentIndex);
+                }
+            }
+            swordSelection.selectedText.gameObject.SetActive(PlayerPrefs.GetString(SelectedSwordKey) == swordSelection.swordDatas[swordSelection.currentIndex].sword.ToString());
+        }
+
+        private void LoadSelectedSword()
+        {
+            savedSword = PlayerPrefs.GetString(SelectedSwordKey, Swords.SwordA.ToString());
+            try
+            {
+                Swords savedEnum = (Swords)System.Enum.Parse(typeof(Swords), savedSword);
+                swordSelection.currentIndex = (int)savedEnum;
+            }
+            catch
+            {
+                swordSelection.currentIndex = 0;
+            }
+
+            Swords selectedSword = (Swords)swordSelection.currentIndex;
+            BeatSaberVREvents.OnSwordSelected?.Invoke(selectedSword);
+        }
+    }
+
+    [System.Serializable]
+    public class SwordSelection
+    {
+        public SwordData[] swordDatas;
+        public Button navLeftButton;
+        public Button navRightButton;
+        public Button selectButton;
+        public TMP_Text selectedText;
+        public int currentIndex;
     }
 }

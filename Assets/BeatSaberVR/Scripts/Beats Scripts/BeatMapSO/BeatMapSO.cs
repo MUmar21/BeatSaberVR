@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace BeatSaberVR
 {
-    [CreateAssetMenu(fileName = "NewBeatMap", menuName = "Beat Saber/Beat Map")]
+    [CreateAssetMenu(fileName = "NewBeatMap", menuName = "Beat Saber VR/Beat Map")]
     public class BeatMapSO : ScriptableObject
     {
         public string songName;

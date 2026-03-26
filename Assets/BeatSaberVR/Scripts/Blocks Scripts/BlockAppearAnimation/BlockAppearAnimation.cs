@@ -9,18 +9,11 @@ namespace BeatSaberVR
         public float duration = 0.4f;
         public float overshoot = 1.2f;
 
-        [Header("Force Shoot Settings")]
-        public float spawnDistance = 15f;
-        public float spawnVerticalOffset = -1.5f;
+        [Header("Animation Settings")]
+        public float groundY = 0.4f; // The exact height of your floor
 
-        private Vector3 targetLocalPos;
+        private float targetY;
         private Sequence appearSequence;
-        private BlockBehavior blockBehavior;
-
-        void Awake()
-        {
-            blockBehavior = GetComponent<BlockBehavior>();
-        }
 
         void OnEnable()
         {
@@ -31,25 +24,39 @@ namespace BeatSaberVR
         {
             appearSequence?.Kill();
 
-            targetLocalPos = transform.localPosition;
+            // 1. Capture the target height assigned by the BlockSpawner (e.g., Row 0, 1, or 2)
+            targetY = transform.localPosition.y;
 
+            // 2. Set the initial state for the spawn illusion
             transform.localScale = Vector3.zero;
-            transform.localPosition = targetLocalPos + (Vector3.forward * spawnDistance) + (Vector3.up * spawnVerticalOffset);
-            if (blockBehavior != null) blockBehavior.isPaused = true;
 
+            // Force the block down to the ground to start
+            Vector3 startPos = transform.localPosition;
+            startPos.y = groundY;
+            transform.localPosition = startPos;
+
+            // Give it a wild starting rotation so it "tumbles" into place
+            transform.localRotation = Quaternion.Euler(45f, 0f, 25f);
+
+            // 3. Create the animation sequence
             appearSequence = DOTween.Sequence();
 
-            appearSequence.Join(transform.DOLocalMove(targetLocalPos, duration).SetEase((DG.Tweening.Ease)Ease.EaseOutBack));
+            // Scale up with a bouncy overshoot
+            appearSequence.Join(transform.DOScale(1f, duration)
+                .SetEase((DG.Tweening.Ease)Ease.EaseInOutBack, overshoot));
 
-            appearSequence.Join(transform.DOScale(1f, duration).SetEase((DG.Tweening.Ease)Ease.EaseOutBack, overshoot));
+            // Rotate back to zero perfectly
+            appearSequence.Join(transform.DOLocalRotate(Vector3.zero, duration)
+                .SetEase((DG.Tweening.Ease)Ease.EaseInOutBack));
 
-            transform.localRotation = Quaternion.Euler(30, 0, 15);
-            appearSequence.Join(transform.DOLocalRotate(Vector3.zero, duration).SetEase((DG.Tweening.Ease)Ease.EaseOutBack));
-
-            appearSequence.OnComplete(() =>
+            // Only animate the Y-Axis! (Let BlockBehavior control the Z-Axis)
+            // If the target is higher than the ground, it will jump up. 
+            // If the target is the bottom row (0.4f), it will just stay on the ground.
+            if (targetY > groundY + 0.05f)
             {
-                if (blockBehavior != null) blockBehavior.isPaused = false;
-            });
+                appearSequence.Join(transform.DOLocalMoveY(targetY, duration)
+                    .SetEase((DG.Tweening.Ease)Ease.EaseOutCubic));
+            }
         }
 
         void OnDisable()

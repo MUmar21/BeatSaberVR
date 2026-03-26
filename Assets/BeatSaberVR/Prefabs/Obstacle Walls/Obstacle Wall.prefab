@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallBehavior
   speed: 15
-  height: 2.8
+  height: 1.45
   depth: 2
 --- !u!65 &6207551714007944246
 BoxCollider:

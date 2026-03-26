@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 431760383055409618}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.072, y: -0.08068, z: 5.103}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -54,9 +54,8 @@ MonoBehaviour:
   defaultPoint: {fileID: 9125309434282968892}
   blockColor: 0
   cutDirection: 0
-  speed: 15
-  isPaused: 0
-  minSwingSpeed: 0.5
+  speed: 20
+  minSwingSpeed: 0
 --- !u!114 &-4655861468180660384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,9 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
   duration: 0.5
-  overshoot: 1.6
-  spawnDistance: 15
-  spawnVerticalOffset: -1.5
+  overshoot: 1.2
+  groundY: 0.4
 --- !u!65 &1124153380242176813
 BoxCollider:
   m_ObjectHideFlags: 0

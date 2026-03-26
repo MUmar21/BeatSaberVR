@@ -12,7 +12,6 @@ namespace BeatSaberVR
         public BlockColor blockColor;
         public CutDirection cutDirection;
         public float speed = 10f;
-        [HideInInspector] public bool isPaused = false;
 
         private bool wasHit = false;
         private const float MIN_SWING_SPEED = 2.5f;
@@ -27,7 +26,6 @@ namespace BeatSaberVR
 
         private void Update()
         {
-            if (isPaused) return;
             transform.Translate(Vector3.back * speed * Time.deltaTime);
 
             if (transform.position.z < -1.5f && !wasHit)
@@ -80,7 +78,6 @@ namespace BeatSaberVR
 
         private Vector3 GetExpectedDirection()
         {
-            // These are in world space — the block flies toward z=0
             return cutDirection switch
             {
                 CutDirection.Up => Vector3.up,
