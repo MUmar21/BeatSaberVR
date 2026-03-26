@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ecbfb9ca958f0d44ebe854de1cdd33a9
+guid: 8c3dd152b68619b4d9067f2353a472a1
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: WoodTable
-    second: {fileID: 2100000, guid: d488bff0fac1f484688c9e6ddb447985, type: 2}
+      name: BlackMetal
+    second: {fileID: 2100000, guid: 166f6fd4add5da14bbc2d46dd016f5ae, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
