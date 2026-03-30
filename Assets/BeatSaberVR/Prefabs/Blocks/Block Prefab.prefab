@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281c541ebee4b9d42aac2f34ef30fa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
-  duration: 0.5
+  duration: 0.8
   overshoot: 1.2
   groundY: 0.4
 --- !u!65 &1124153380242176813

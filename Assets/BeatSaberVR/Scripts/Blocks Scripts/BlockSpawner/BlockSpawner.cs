@@ -16,6 +16,7 @@ namespace BeatSaberVR
             block.cutDirection = dir;
             block.gameObject.SetActive(true);
             block.SetDirectionPoint(dir);
+            BeatSaberVREvents.OnBlockSpawned?.Invoke(color);
         }
 
         public void SpawnWall(int col, int width, float zDepth)
@@ -30,6 +31,8 @@ namespace BeatSaberVR
 
             wall.Setup(wallWidth, pos);
             wall.gameObject.SetActive(true);
+
+            BeatSaberVREvents.OnBlockSpawned?.Invoke(BlockColor.Red); // Using Red as a placeholder since walls don't have a color.
         }
     }
 }
