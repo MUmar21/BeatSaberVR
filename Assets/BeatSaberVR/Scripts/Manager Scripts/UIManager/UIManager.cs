@@ -1,9 +1,10 @@
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 namespace BeatSaberVR
 {
+    using DG.Tweening;
+
     public class UIManager : Singleton<UIManager>
     {
         [Header("Panels")]
@@ -117,7 +118,7 @@ namespace BeatSaberVR
             DOTween.Kill(wallHitEffect);
             wallHitEffect.alpha = 1f;
             wallHitEffect.DOFade(0f, 1.5f)
-                .SetEase((DG.Tweening.Ease)Ease.EaseInCubic)
+                .SetEase(Ease.InCubic)
                 .SetId(wallHitEffect);
         }
 

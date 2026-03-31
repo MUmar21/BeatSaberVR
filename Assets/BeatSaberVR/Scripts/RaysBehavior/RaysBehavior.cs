@@ -1,8 +1,9 @@
-using DG.Tweening;
 using UnityEngine;
 
 namespace BeatSaberVR
 {
+    using DG.Tweening;
+
     public class RaysBehavior : MonoBehaviour
     {
         [Header("Ray Objects")]
@@ -89,7 +90,7 @@ namespace BeatSaberVR
             DOTween.Kill(rayTransform);
 
             DOVirtual.Float(startAlpha, 0f, fadeDuration, (alpha) => SetRayAlpha(index, alpha))
-                .SetEase((DG.Tweening.Ease)Ease.EaseOutCubic)
+                .SetEase(Ease.OutCubic)
                 .SetId(rayTransform)
                 .OnComplete(() =>
                 {
