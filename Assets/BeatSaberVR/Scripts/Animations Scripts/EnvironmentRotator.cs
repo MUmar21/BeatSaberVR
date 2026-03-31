@@ -24,11 +24,13 @@ namespace BeatSaberVR
         private void OnEnable()
         {
             BeatSaberVREvents.OnGameStart += OnStart;
+            BeatSaberVREvents.OnGameplayEnd += OnEnd;
         }
 
         private void OnDisable()
         {
             BeatSaberVREvents.OnGameStart -= OnStart;
+            BeatSaberVREvents.OnGameplayEnd -= OnEnd;
         }
 
         private void OnStart()
@@ -94,6 +96,13 @@ namespace BeatSaberVR
             float newMax = currentBeatDuration * maxMultiplier;
 
             PlayRandomRotation();
+        }
+
+        private void OnEnd()
+        {
+            transform.DOKill();
+            transform.localRotation = Quaternion.identity;
+            isPlaying = false;
         }
     }
 }

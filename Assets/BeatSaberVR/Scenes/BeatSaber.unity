@@ -517,7 +517,7 @@ MonoBehaviour:
   - {fileID: 1844055675}
   redColor: {r: 255.99997, g: 0, b: 0, a: 1}
   blueColor: {r: 0, g: 0, b: 2.9960787, a: 1}
-  fadeDuration: 2.5
+  fadeDuration: 3.5
   startAlpha: 1
 --- !u!114 &168471135
 MonoBehaviour:
@@ -536,7 +536,7 @@ MonoBehaviour:
   - {fileID: 371998847}
   redColor: {r: 255.99997, g: 0, b: 0, a: 1}
   blueColor: {r: 0, g: 0, b: 2.9960787, a: 1}
-  fadeDuration: 2.5
+  fadeDuration: 3.5
   startAlpha: 1
 --- !u!1 &176096784
 GameObject:

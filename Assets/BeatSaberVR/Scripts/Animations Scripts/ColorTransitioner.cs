@@ -34,6 +34,7 @@ namespace BeatSaberVR
             BeatSaberVREvents.OnGameStart += StartNextTransition;
             BeatSaberVREvents.OnBlockSpawned += TriggerFlash;
             BeatSaberVREvents.OnBlockCut += TriggerFlash;
+            BeatSaberVREvents.OnGameplayEnd += OnEnd;
         }
 
         private void OnDisable()
@@ -41,6 +42,7 @@ namespace BeatSaberVR
             BeatSaberVREvents.OnGameStart -= StartNextTransition;
             BeatSaberVREvents.OnBlockSpawned -= TriggerFlash;
             BeatSaberVREvents.OnBlockCut -= TriggerFlash;
+            BeatSaberVREvents.OnGameplayEnd -= OnEnd;
         }
 
         private void StartNextTransition()
@@ -79,6 +81,12 @@ namespace BeatSaberVR
 
             targetMaterial.DOColor(baseColor, EmissionProp, flashDuration)
                 .OnComplete(StartNextTransition);
+        }
+
+        private void OnEnd()
+        {
+            currentSequence?.Kill();
+            DOTween.Kill(targetMaterial);
         }
     }
 }
