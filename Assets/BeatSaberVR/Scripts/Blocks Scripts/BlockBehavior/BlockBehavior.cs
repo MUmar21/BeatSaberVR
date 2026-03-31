@@ -14,7 +14,7 @@ namespace BeatSaberVR
         public float speed = 10f;
 
         private bool wasHit = false;
-        private const float MIN_SWING_SPEED = 2.5f;
+        private const float MIN_SWING_SPEED = 1.5f;
 
         [Header("Editor Testing Mouse MIN_SWING_SPEED")]
         [SerializeField] private float minSwingSpeed = 0.5f;
