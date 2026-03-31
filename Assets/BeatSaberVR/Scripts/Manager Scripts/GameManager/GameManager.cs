@@ -12,6 +12,8 @@ namespace BeatSaberVR
 
         [Header("For Testing")]
         [SerializeField] private bool noGameOver = false;
+        public bool PlayGameOnStart = false;
+
         [Header("Energy Settings")]
         [SerializeField] private float maxEnergy = 100f;
         [SerializeField] private float startEnergy = 50f;

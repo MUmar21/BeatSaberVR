@@ -39,6 +39,12 @@ namespace BeatSaberVR
 
         private void Start()
         {
+            if (GameManager.Instance.PlayGameOnStart)
+            {
+                OnStart();
+                return;
+            }
+
             ToggleInGameUI(false);
             startPanel.SetActive(true);
             swordSelectionPanel.SetActive(true);

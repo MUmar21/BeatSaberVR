@@ -1833,6 +1833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.GameManager
   dontDestroyOnLoad: 0
   noGameOver: 0
+  PlayGameOnStart: 0
   maxEnergy: 200
   startEnergy: 150
   energyPerGoodHit: 4
@@ -2088,7 +2089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688984043}
   m_Layer: 0
-  m_Name: Lithning
+  m_Name: Ligthing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5915,7 +5916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3006403408567284480, guid: 523fde2a1321e25479097c56b8a60479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 3006403408567284480, guid: 523fde2a1321e25479097c56b8a60479, type: 3}
       propertyPath: m_LocalPosition.z
