@@ -230,7 +230,7 @@ namespace BeatSaberVR
                     {
                         time = beatTime,
                         col = wallCol,
-                        width = 2,
+                        width = 1,
                         duration = spb * 2f   // 2 beats — visible approach time
                     });
                     lastObsTime = beatTime;

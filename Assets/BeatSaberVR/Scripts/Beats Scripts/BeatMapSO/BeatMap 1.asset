@@ -15,7 +15,7 @@ MonoBehaviour:
   songName: theme1
   songClip: {fileID: 8300000, guid: 54957f52ca7cfa144b91784f523dd4bc, type: 3}
   bpm: 128
-  noteJumpSpeed: 10
+  noteJumpSpeed: 15
   notes:
   - time: 10.37932
     col: 1
@@ -220,7 +220,7 @@ MonoBehaviour:
   obstacles:
   - time: 7.7786846
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 14.048073
     col: 0
@@ -240,11 +240,11 @@ MonoBehaviour:
     duration: 0.9375
   - time: 41.795918
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 48.854786
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 55.193832
     col: 2
@@ -256,17 +256,17 @@ MonoBehaviour:
     duration: 0.9375
   - time: 77.46177
     col: 0
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 83.731155
     col: 2
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 90.34885
     col: 0
-    width: 2
+    width: 1
     duration: 0.9375
   - time: 96.64145
     col: 0
-    width: 2
+    width: 1
     duration: 0.9375
