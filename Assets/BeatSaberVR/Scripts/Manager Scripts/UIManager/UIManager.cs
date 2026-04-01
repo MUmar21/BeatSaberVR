@@ -3,15 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace BeatSaberVR
 {
-    using DG.Tweening;
-
     public class UIManager : Singleton<UIManager>
     {
         [Header("Panels")]
         [SerializeField] private GameObject startPanel;
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private GameObject swordSelectionPanel;
-        [SerializeField] private CanvasGroup wallHitEffect;
         [Header("Texts")]
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text comboText;
@@ -49,7 +46,6 @@ namespace BeatSaberVR
             startPanel.SetActive(true);
             swordSelectionPanel.SetActive(true);
             gameOverPanel.SetActive(false);
-            if (wallHitEffect != null) wallHitEffect.alpha = 0f;
         }
 
         private void OnEnable()
@@ -78,7 +74,6 @@ namespace BeatSaberVR
 
         private void OnStart()
         {
-            if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             startPanel.SetActive(false);
             swordSelectionPanel.SetActive(false);
             ToggleInGameUI(true);
@@ -87,7 +82,6 @@ namespace BeatSaberVR
 
         private void OnEnd()
         {
-            if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             gameOverTitleText.text = "COMPLETE!";
             finalScoreText.text = $"Score: {GameManager.Instance.GetScore()}";
             ToggleInGameUI(false);
@@ -96,7 +90,6 @@ namespace BeatSaberVR
 
         private void OnReplay()
         {
-            if (wallHitEffect != null) wallHitEffect.alpha = 0f;
             startPanel.SetActive(false);
             swordSelectionPanel.SetActive(false);
             gameOverPanel.SetActive(false);
@@ -108,24 +101,6 @@ namespace BeatSaberVR
         {
             scoreText.text = $"Score: {score}";
             comboText.text = $"Combo: {combo}";
-        }
-
-        public void OnWallHit()
-        {
-            if (wallHitEffect == null) return;
-
-            wallHitEffect.alpha = 1f;
-            PlayWallHitEffect();
-        }
-
-        private void PlayWallHitEffect()
-        {
-            if (wallHitEffect == null) return;
-            DOTween.Kill(wallHitEffect);
-            wallHitEffect.alpha = 1f;
-            wallHitEffect.DOFade(0f, 1.5f)
-                .SetEase(Ease.InCubic)
-                .SetId(wallHitEffect);
         }
 
         public void UpdateEnergyBar(float normalizedValue)

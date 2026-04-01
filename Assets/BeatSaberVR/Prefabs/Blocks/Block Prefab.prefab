@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
   duration: 0.8
   overshoot: 1.2
+  rotationDelay: 0.5
   groundY: 0.4
 --- !u!65 &1124153380242176813
 BoxCollider:

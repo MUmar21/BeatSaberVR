@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - Sword
+  - Wall
   layers:
   - Default
   - TransparentFX

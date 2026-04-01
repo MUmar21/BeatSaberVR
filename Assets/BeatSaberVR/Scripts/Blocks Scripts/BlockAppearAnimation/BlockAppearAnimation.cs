@@ -17,8 +17,16 @@ namespace BeatSaberVR
         private float targetY;
         private Sequence appearSequence;
 
+        private BoxCollider blockCollider;
+
+        private void Awake()
+        {
+            blockCollider = GetComponent<BoxCollider>();
+        }
+
         void OnEnable()
         {
+            blockCollider.enabled = false;
             PlayAppearAnimation();
         }
 
@@ -48,6 +56,11 @@ namespace BeatSaberVR
                 appearSequence.Join(transform.DOLocalMoveY(targetY, duration)
                     .SetEase(Ease.OutCubic));
             }
+
+            appearSequence.OnComplete(() =>
+            {
+                blockCollider.enabled = true;
+            });
         }
 
         void OnDisable()

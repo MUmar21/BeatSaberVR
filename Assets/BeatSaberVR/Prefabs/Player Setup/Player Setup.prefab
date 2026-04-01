@@ -2648,7 +2648,6 @@ GameObject:
   - component: {fileID: 1670553550727935571}
   - component: {fileID: 7187248813429349953}
   - component: {fileID: 3818816561228842191}
-  - component: {fileID: 6964049026830344242}
   m_Layer: 0
   m_Name: Player Setup
   m_TagString: Player
@@ -2664,8 +2663,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136420689583883134}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.195, y: -0.13, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2685,7 +2684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0361078e3943ac048a4bb70c27787e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSetupPosition
-  startPosition: {x: 0.195, y: -0.4, z: 0.95}
+  startPosition: {x: 0.136, y: -0.18, z: 2.2}
 --- !u!114 &3563885309833114155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,31 +2772,6 @@ MonoBehaviour:
   m_AimAssistRequiredSpeed: 0.25
   m_AimAssistPercent: 0.8
   m_AimAssistMaxSpeedPercent: 10
---- !u!143 &6964049026830344242
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136420689583883134}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.5
-  m_Radius: 0.2
-  m_SlopeLimit: 45
-  m_StepOffset: 0.5
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &2142793540890100599
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,6 +10598,9 @@ GameObject:
   - component: {fileID: 1020029340712235614}
   - component: {fileID: 6267514517585240127}
   - component: {fileID: 984209382347418846}
+  - component: {fileID: 107883421454666340}
+  - component: {fileID: 1311816566272045087}
+  - component: {fileID: 9302340152524967}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10868,6 +10845,66 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 1356e0cd1170ceb44a70ba402d90f101, type: 2}
+--- !u!114 &107883421454666340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318610868704912054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0bd6d6a3316a84cbaeba13caf5f68e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.VRHeadCollision
+--- !u!54 &1311816566272045087
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318610868704912054}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &9302340152524967
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318610868704912054}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5354990321905107064
 GameObject:
   m_ObjectHideFlags: 0

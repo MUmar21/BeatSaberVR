@@ -24,10 +24,10 @@ namespace BeatSaberVR
             WallBehavior wall = BlockPoolManager.Instance.GetWall();
             if (wall == null) return;
 
-            float wallWidth = width * 0.6f;
+            float wallWidth = width * 0.7f;
             float leftEdge = -0.9f + col * 0.2f;
             float centerX = leftEdge + wallWidth * 0.5f;
-            Vector3 pos = new Vector3(centerX, 1.4f, zDepth);
+            Vector3 pos = new Vector3(centerX, 1.8f, zDepth);
 
             wall.Setup(wallWidth, pos);
             wall.gameObject.SetActive(true);

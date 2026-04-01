@@ -79,7 +79,7 @@ namespace BeatSaberVR
 
             float direction = Random.value > 0.5f ? 1f : -1f;
 
-            float duration = Random.Range(currentBeatDuration * 0.8f, currentBeatDuration * 1.2f);
+            float duration = Random.Range(currentBeatDuration * 1f, currentBeatDuration * 1.5f);
 
             transform.DOLocalRotate(rotationAxis * (rotationAmount * direction), duration, RotateMode.LocalAxisAdd)
                 .SetEase(easeType)

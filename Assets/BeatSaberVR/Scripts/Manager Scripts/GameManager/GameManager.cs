@@ -74,6 +74,7 @@ namespace BeatSaberVR
 
             UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
             UIManager.Instance.UpdateEnergyBar(currentEnergy / maxEnergy);
+            BeatSaberVREvents.OnWallHit?.Invoke();
 
             CheckGameOver();
         }

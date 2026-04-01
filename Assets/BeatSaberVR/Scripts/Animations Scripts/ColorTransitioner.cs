@@ -1,9 +1,9 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace BeatSaberVR
 {
-    using DG.Tweening;
-
     public class ColorTransitioner : MonoBehaviour
     {
         [Header("Settings")]
@@ -15,6 +15,9 @@ namespace BeatSaberVR
         [Header("Block Cut Flash")]
         public float flashIntensity = 4.0f;
         public float flashDuration = 0.2f;
+
+        public event Action<Color, float> OnColorChanged;
+        public event Action<Color, float> OnFlashTriggered;
 
         private Material targetMaterial;
         private int lastColorIndex = -1;
@@ -43,6 +46,7 @@ namespace BeatSaberVR
             BeatSaberVREvents.OnBlockSpawned -= TriggerFlash;
             BeatSaberVREvents.OnBlockCut -= TriggerFlash;
             BeatSaberVREvents.OnGameplayEnd -= OnEnd;
+            currentSequence?.Kill();
         }
 
         private void StartNextTransition()
@@ -52,19 +56,19 @@ namespace BeatSaberVR
             int nextIndex;
             do
             {
-                nextIndex = Random.Range(0, possibleColors.Length);
+                nextIndex = UnityEngine.Random.Range(0, possibleColors.Length);
             } while (nextIndex == lastColorIndex && possibleColors.Length > 1);
 
             lastColorIndex = nextIndex;
             Color targetColor = possibleColors[nextIndex];
 
-            currentSequence = DOTween.Sequence();
+            // Convert HDR to LDR before sending to Fog
+            OnColorChanged?.Invoke(GetLDRColor(targetColor), snapDuration);
 
+            currentSequence = DOTween.Sequence();
             currentSequence.Append(targetMaterial.DOColor(targetColor, ColorProp, snapDuration));
             currentSequence.Join(targetMaterial.DOColor(targetColor, EmissionProp, snapDuration));
-
             currentSequence.AppendInterval(colorStayDuration);
-
             currentSequence.OnComplete(StartNextTransition);
         }
 
@@ -74,13 +78,25 @@ namespace BeatSaberVR
             DOTween.Kill(targetMaterial);
 
             Color baseColor = color == BlockColor.Red ? Color.red : Color.blue;
-            Color intensityColor = baseColor * flashIntensity;
 
+            OnFlashTriggered?.Invoke(baseColor, flashDuration);
+
+            Color intensityColor = baseColor * flashIntensity;
             targetMaterial.SetColor(ColorProp, baseColor);
             targetMaterial.SetColor(EmissionProp, intensityColor);
 
             targetMaterial.DOColor(baseColor, EmissionProp, flashDuration)
                 .OnComplete(StartNextTransition);
+        }
+
+        private Color GetLDRColor(Color hdrColor)
+        {
+            float maxIntensity = Mathf.Max(hdrColor.r, hdrColor.g, hdrColor.b);
+            if (maxIntensity > 1f)
+            {
+                return hdrColor / maxIntensity;
+            }
+            return hdrColor;
         }
 
         private void OnEnd()
