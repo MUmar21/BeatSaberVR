@@ -2684,7 +2684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0361078e3943ac048a4bb70c27787e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSetupPosition
-  startPosition: {x: 0.136, y: -0.18, z: 2.2}
+  startPosition: {x: 0, y: -0.18, z: 1.2}
 --- !u!114 &3563885309833114155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10597,7 +10597,6 @@ GameObject:
   - component: {fileID: 8127562376932008206}
   - component: {fileID: 1020029340712235614}
   - component: {fileID: 6267514517585240127}
-  - component: {fileID: 984209382347418846}
   - component: {fileID: 107883421454666340}
   - component: {fileID: 1311816566272045087}
   - component: {fileID: 9302340152524967}
@@ -10828,23 +10827,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &984209382347418846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5318610868704912054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 1356e0cd1170ceb44a70ba402d90f101, type: 2}
 --- !u!114 &107883421454666340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15965,15 +15947,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4124398098422493401, guid: 67cb674229f44aa49ad661c566333bc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4124398098422493401, guid: 67cb674229f44aa49ad661c566333bc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4124398098422493401, guid: 67cb674229f44aa49ad661c566333bc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 7276642971199881690, guid: 67cb674229f44aa49ad661c566333bc6, type: 3}
       propertyPath: m_Name

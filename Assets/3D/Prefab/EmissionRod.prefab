@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4588619115661365058}
   - component: {fileID: 683966879625371841}
   - component: {fileID: 2104322858933090438}
+  - component: {fileID: 2076706787434589133}
+  - component: {fileID: 8023213002927320181}
   m_Layer: 0
   m_Name: EmissionRod
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5642219648896521258}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 31.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -90,3 +92,41 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2076706787434589133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5642219648896521258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc09aaeefe0daf418864b4dfe890ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.EnvironmentRotator
+  rotationAxis: {x: 0, y: 0, z: 1}
+  rotationAmount: 60
+  easeType: 2
+  beatMap: {fileID: 11400000, guid: a0577da4b7a45154c8367e05b71678ce, type: 2}
+  songSource: {fileID: 0}
+  randomizeStartRotation: 1
+--- !u!114 &8023213002927320181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5642219648896521258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3aa0a0042a75d145b5ebdba46b1fd8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.ColorTransitioner
+  targetRenderer: {fileID: 2104322858933090438}
+  possibleColors:
+  - {r: 255.99997, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 2.9960787, a: 1}
+  colorStayDuration: 1
+  snapDuration: 0.05
+  flashIntensity: 6
+  flashDuration: 1.5
