@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1606366683937288260}
   - component: {fileID: 6482975368586955463}
   - component: {fileID: 2098503330923113182}
+  - component: {fileID: 3966297181676628842}
   m_Layer: 0
   m_Name: LightningArrow
   m_TagString: Untagged
@@ -90,3 +91,23 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3966297181676628842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992470501100341303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3aa0a0042a75d145b5ebdba46b1fd8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.ColorTransitioner
+  targetRenderer: {fileID: 2098503330923113182}
+  possibleColors:
+  - {r: 1.0592735, g: 0, b: 0, a: 1}
+  - {r: 0.05, g: 0.09363713, b: 1.0592737, a: 1}
+  colorStayDuration: 1
+  snapDuration: 0.05
+  flashIntensity: 6
+  flashDuration: 1.5
