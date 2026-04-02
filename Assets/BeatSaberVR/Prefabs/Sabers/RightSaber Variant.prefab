@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: trailMaterial
       value: 
       objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
+    - target: {fileID: 2157106946030592860, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a02a44600a3b4e4d836f5bbc855a3d5, type: 2}
     - target: {fileID: 2765502167902398777, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_Name
       value: RightSaber Variant
@@ -100,6 +104,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4c2118f5e4651d04c88f2d1c37b4f3d6, type: 2}
+    - target: {fileID: 8263123231027845130, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263123231027845130, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.12023994
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263123231027845130, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.09803921
+      objectReference: {fileID: 0}
     - target: {fileID: 8548567910301610074, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: trailMaterial
       value: 
@@ -134,9 +150,19 @@ PrefabInstance:
       addedObject: {fileID: 1951509712997370606}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+--- !u!198 &3474069059092492521 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8263123231027845130, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+  m_PrefabInstance: {fileID: 4799392080916080867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4124398098422493401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+  m_PrefabInstance: {fileID: 4799392080916080867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4813540916045526492 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 24765807462505791, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
   m_PrefabInstance: {fileID: 4799392080916080867}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7260405864809889543
@@ -198,7 +224,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9209041851569159502, guid: 475c3a920e6b2cf4da60089949b1d946, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 4114697638801645605}
+    - targetCorrespondingSourceObject: {fileID: 9209041851569159502, guid: 475c3a920e6b2cf4da60089949b1d946, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 5232699714731259881}
   m_SourcePrefab: {fileID: 100100000, guid: 475c3a920e6b2cf4da60089949b1d946, type: 3}
 --- !u!4 &1783175740737259504 stripped
 Transform:
@@ -210,6 +242,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9209041851569159502, guid: 475c3a920e6b2cf4da60089949b1d946, type: 3}
   m_PrefabInstance: {fileID: 7260405864809889543}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4114697638801645605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949832616221590089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5456f352344784d8c2a11dcc4571bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
+  collisionEffect: {fileID: 3474069059092492521}
+  sfx: {fileID: 4813540916045526492}
+--- !u!114 &5232699714731259881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949832616221590089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6052473146b7243aabd3740ea1ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaberHapticHandler
+  saberColor: 1
+  blockIntensity: 0.8
+  blockDuration: 0.05
+  clashIntensity: 0.4
+  wallIntensity: 0.3
+  wallDuration: 0.1
 --- !u!1001 &7303173222834660190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,13 +333,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7235669556307699763, guid: d1d4e47ebc228344299fbd369b5b28ca, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6851518998032267089}
+    - targetCorrespondingSourceObject: {fileID: 7235669556307699763, guid: d1d4e47ebc228344299fbd369b5b28ca, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 8847697389662053949}
   m_SourcePrefab: {fileID: 100100000, guid: d1d4e47ebc228344299fbd369b5b28ca, type: 3}
 --- !u!1 &85663475977702253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7235669556307699763, guid: d1d4e47ebc228344299fbd369b5b28ca, type: 3}
   m_PrefabInstance: {fileID: 7303173222834660190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6851518998032267089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85663475977702253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5456f352344784d8c2a11dcc4571bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
+  collisionEffect: {fileID: 3474069059092492521}
+  sfx: {fileID: 4813540916045526492}
+--- !u!114 &8847697389662053949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85663475977702253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6052473146b7243aabd3740ea1ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaberHapticHandler
+  saberColor: 1
+  blockIntensity: 0.8
+  blockDuration: 0.05
+  clashIntensity: 0.4
+  wallIntensity: 0.3
+  wallDuration: 0.1
 --- !u!4 &1951509712997370606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9101549329505233328, guid: d1d4e47ebc228344299fbd369b5b28ca, type: 3}

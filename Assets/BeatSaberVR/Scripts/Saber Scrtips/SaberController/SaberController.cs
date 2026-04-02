@@ -29,6 +29,7 @@ namespace BeatSaberVR
         private void OnEnable()
         {
             BeatSaberVREvents.OnSwordSelected += OnSwordSelected;
+
         }
 
         private void OnDisable()
