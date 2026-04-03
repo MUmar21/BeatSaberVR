@@ -7,8 +7,8 @@ namespace BeatSaberVR
     public class RaysBehavior : MonoBehaviour
     {
         [Header("Ray Objects")]
-        [Tooltip("Drag all your individual Ray GameObjects (with MeshRenderers) here.")]
-        [SerializeField] private Renderer[] rayRenderers;
+        [SerializeField] private Renderer leftRayRenderer;
+        [SerializeField] private Renderer rightRayRenderer;
 
         [Header("Colors")]
         [SerializeField, ColorUsage(true, true)] private Color redColor = Color.red;
@@ -18,20 +18,29 @@ namespace BeatSaberVR
         public float fadeDuration = 0.15f;
         public float startAlpha = 0.8f;
 
-        private Material[] rayMaterials;
+        private Material leftMaterial;
+        private Material rightMaterial;
+
+        // Tracking for simultaneous cuts
+        private int lastFrameProcessed = -1;
+        private bool leftUsedThisFrame = false;
+        private bool rightUsedThisFrame = false;
 
         private static readonly int ColorProp = Shader.PropertyToID("_BaseColor");
         private static readonly int EmissionProp = Shader.PropertyToID("_EmissionColor");
 
         private void Awake()
         {
-            rayMaterials = new Material[rayRenderers.Length];
-
-            for (int i = 0; i < rayRenderers.Length; i++)
+            if (leftRayRenderer != null)
             {
-                rayMaterials[i] = rayRenderers[i].material;
-                SetRayAlpha(i, 0f);
-                rayRenderers[i].gameObject.SetActive(false);
+                leftMaterial = leftRayRenderer.material;
+                SetRayAlpha(leftMaterial, 0f);
+            }
+
+            if (rightRayRenderer != null)
+            {
+                rightMaterial = rightRayRenderer.material;
+                SetRayAlpha(rightMaterial, 0f);
             }
         }
 
@@ -43,68 +52,78 @@ namespace BeatSaberVR
         private void OnDisable()
         {
             BeatSaberVREvents.OnBlockCut -= ShowRay;
-
-            for (int i = 0; i < rayRenderers.Length; i++)
-            {
-                if (rayRenderers[i] != null)
-                    DOTween.Kill(rayRenderers[i].transform);
-            }
+            if (leftRayRenderer != null)
+                DOTween.Kill(leftRayRenderer?.transform);
+            if (rightRayRenderer != null)
+                DOTween.Kill(rightRayRenderer?.transform);
         }
 
         private void ShowRay(BlockColor color)
         {
-            int availableIndex = GetAvailableRayIndex();
-
-            // If all rays are currently flashing
-            if (availableIndex == -1)
+            // Reset frame tracking for simultaneous block hits
+            if (Time.frameCount != lastFrameProcessed)
             {
-                availableIndex = Random.Range(0, rayRenderers.Length);
+                lastFrameProcessed = Time.frameCount;
+                leftUsedThisFrame = false;
+                rightUsedThisFrame = false;
             }
+
+            bool useLeft;
+
+            // Logic: Balance sides during simultaneous cuts
+            if (!leftUsedThisFrame && !rightUsedThisFrame)
+            {
+                useLeft = Random.value > 0.5f;
+            }
+            else if (leftUsedThisFrame)
+            {
+                useLeft = false;
+            }
+            else
+            {
+                useLeft = true;
+            }
+
+            if (useLeft)
+            {
+                AnimateRay(leftRayRenderer, leftMaterial, color, true);
+                leftUsedThisFrame = true;
+            }
+            else
+            {
+                AnimateRay(rightRayRenderer, rightMaterial, color, false);
+                rightUsedThisFrame = true;
+            }
+        }
+
+        private void AnimateRay(Renderer renderer, Material mat, BlockColor color, bool isLeft)
+        {
+            if (renderer == null) return;
+
+            float randomZ = Random.Range(25f, 75f);
+
+            if (isLeft) randomZ *= -1f;
+
+            renderer.transform.localRotation = Quaternion.Euler(0, 0, randomZ);
 
             Color targetColor = (color == BlockColor.Red) ? redColor : blueColor;
+            mat.SetColor(ColorProp, targetColor);
+            mat.SetColor(EmissionProp, targetColor);
 
-            rayMaterials[availableIndex].SetColor(ColorProp, targetColor);
-            rayMaterials[availableIndex].SetColor(EmissionProp, targetColor);
-            SetRayAlpha(availableIndex, startAlpha);
+            renderer.gameObject.SetActive(true);
+            DOTween.Kill(renderer.transform);
 
-            rayRenderers[availableIndex].gameObject.SetActive(true);
-            AnimateRay(availableIndex);
-        }
-
-        private int GetAvailableRayIndex()
-        {
-            for (int i = 0; i < rayRenderers.Length; i++)
-            {
-                if (!rayRenderers[i].gameObject.activeSelf)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        private void AnimateRay(int index)
-        {
-            Transform rayTransform = rayRenderers[index].transform;
-
-            DOTween.Kill(rayTransform);
-
-            DOVirtual.Float(startAlpha, 0f, fadeDuration, (alpha) => SetRayAlpha(index, alpha))
+            DOVirtual.Float(startAlpha, 0f, fadeDuration, (alpha) => SetRayAlpha(mat, alpha))
                 .SetEase(Ease.OutCubic)
-                .SetId(rayTransform)
-                .OnComplete(() =>
-                {
-                    rayRenderers[index].gameObject.SetActive(false);
-                });
+                .SetId(renderer.transform)
+                .OnComplete(() => SetRayAlpha(mat, 0f));
         }
 
-        private void SetRayAlpha(int index, float alpha)
+        private void SetRayAlpha(Material mat, float alpha)
         {
-            Material mat = rayMaterials[index];
             Color c = mat.GetColor(ColorProp);
             c.a = alpha;
             mat.SetColor(ColorProp, c);
-
             mat.SetColor(EmissionProp, c * Mathf.LinearToGammaSpace(alpha));
         }
     }
