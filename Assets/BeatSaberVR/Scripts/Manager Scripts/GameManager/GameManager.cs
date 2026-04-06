@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace BeatSaberVR
@@ -8,7 +9,7 @@ namespace BeatSaberVR
     public class GameManager : Singleton<GameManager>
     {
         private int score = 0;
-        private int combo = 0;
+        //private int combo = 0;
 
         [Header("For Testing")]
         [SerializeField] private bool noGameOver = false;
@@ -21,6 +22,12 @@ namespace BeatSaberVR
         [SerializeField] private float energyPerMiss = -8f;  // lose on miss
         [SerializeField] private float energyPerWallHit = -5f;  // lose on wall
         [SerializeField] private float gameOverThreshold = 0f;   // fail at 0
+
+        [Header("Timer")]
+        [SerializeField] private float levelTimeLimit = 120f; // seconds
+        [SerializeField] private bool useLevelTimer = true;
+        private float timer;
+        private Coroutine timerCoroutine;
 
         private float currentEnergy;
         private bool isGameOver = false;
@@ -39,16 +46,53 @@ namespace BeatSaberVR
             BeatSaberVREvents.OnGameplayEnd -= EndGameplay;
         }
 
+        private void StartGame()
+        {
+            ResetGameProps();
+            GameplayStarted = true;
+            UIManager.Instance.UpdateScoreAndComboTexts(score);
+            UIManager.Instance.UpdateEnergyBar(currentEnergy / maxEnergy);
+
+            if (useLevelTimer)
+            {
+                timerCoroutine = StartCoroutine(Timer());
+            }
+        }
+
+        private void ResetGameProps()
+        {
+            StopTimer();
+            score = 0;
+            timer = 0f;
+            currentEnergy = startEnergy;
+            isGameOver = false;
+        }
+
+        private IEnumerator Timer()
+        {
+            while (GameplayStarted && useLevelTimer)
+            {
+                timer += Time.unscaledDeltaTime;
+                UIManager.Instance.UpdateTimerText(levelTimeLimit - timer);
+
+                if (timer >= levelTimeLimit)
+                {
+                    TriggerGameOver();
+                    yield break;
+                }
+                yield return null;
+            }
+            timerCoroutine = null;
+        }
+
         public void AddScore(int points)
         {
             if (isGameOver) return;
 
-            combo++;
-            int total = points * GetComboMultiplier();
-            score += total;
-            currentEnergy = Mathf.Clamp(currentEnergy + energyPerGoodHit, 0f, maxEnergy);
+            //int total = points * GetComboMultiplier();
+            //score += total;
 
-            UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
+            UIManager.Instance.UpdateScoreAndComboTexts(score);
             UIManager.Instance.UpdateEnergyBar(currentEnergy / maxEnergy);
         }
 
@@ -56,10 +100,10 @@ namespace BeatSaberVR
         {
             if (isGameOver) return;
 
-            combo = 0;
+            //combo = 0;
             currentEnergy = Mathf.Clamp(currentEnergy + energyPerMiss, 0f, maxEnergy);
 
-            UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
+            UIManager.Instance.UpdateScoreAndComboTexts(score);
             UIManager.Instance.UpdateEnergyBar(currentEnergy / maxEnergy);
 
             CheckGameOver();
@@ -69,23 +113,23 @@ namespace BeatSaberVR
         {
             if (isGameOver) return;
 
-            combo = 0;
+            //combo = 0;
             currentEnergy = Mathf.Clamp(currentEnergy + energyPerWallHit, 0f, maxEnergy);
 
-            UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
+            UIManager.Instance.UpdateScoreAndComboTexts(score);
             UIManager.Instance.UpdateEnergyBar(currentEnergy / maxEnergy);
             BeatSaberVREvents.OnWallHit?.Invoke();
 
             CheckGameOver();
         }
 
-        private int GetComboMultiplier()
-        {
-            if (combo >= 32) return 8;
-            if (combo >= 16) return 4;
-            if (combo >= 8) return 2;
-            return 1;
-        }
+        //private int GetComboMultiplier()
+        //{
+        //    if (combo >= 32) return 8;
+        //    if (combo >= 16) return 4;
+        //    if (combo >= 8) return 2;
+        //    return 1;
+        //}
 
         private void CheckGameOver()
         {
@@ -101,18 +145,8 @@ namespace BeatSaberVR
             isGameOver = true;
             GameplayStarted = false;
 
-            Debug.Log($"GAME OVER — Final score: {score}  Combo: {combo}");
-
             BeatSaberVREvents.OnGameplayEnd?.Invoke();
             BeatSaberVREvents.OnGameOver?.Invoke(score);
-        }
-
-        private void StartGame()
-        {
-            ResetGameProps();
-            GameplayStarted = true;
-            UIManager.Instance.UpdateScoreAndComboTexts(score, combo);
-            UIManager.Instance.UpdateEnergyBar(currentEnergy / maxEnergy);
         }
 
         private void EndGameplay()
@@ -120,15 +154,17 @@ namespace BeatSaberVR
             GameplayStarted = false;
         }
 
-        private void ResetGameProps()
+        private void StopTimer()
         {
-            score = 0;
-            combo = 0;
-            currentEnergy = startEnergy;
-            isGameOver = false;
+            if (timerCoroutine != null)
+            {
+                StopCoroutine(timerCoroutine);
+                timerCoroutine = null;
+            }
         }
 
         public int GetScore() => score;
         public float GetEnergy() => currentEnergy;
+
     }
 }

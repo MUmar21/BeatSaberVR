@@ -11,7 +11,7 @@ namespace BeatSaberVR
         [SerializeField] private GameObject swordSelectionPanel;
         [Header("Texts")]
         [SerializeField] private TMP_Text scoreText;
-        [SerializeField] private TMP_Text comboText;
+        [SerializeField] private TMP_Text TimerText;
         [Header("Buttons")]
         [SerializeField] private Button startButton;
         [SerializeField] private Button replayButton;
@@ -21,6 +21,10 @@ namespace BeatSaberVR
         [Header("Game Over Panel")]
         [SerializeField] private TMP_Text finalScoreText;
         [SerializeField] private TMP_Text gameOverTitleText;
+        [Header("Finance Rating")]
+        [SerializeField] private Image happinessFill;
+        [SerializeField] private Image stressFill;
+        [SerializeField] private Image financialFill;
 
         [Header("Sword Selection")]
         [SerializeField] private SwordSelection swordSelection;
@@ -97,10 +101,14 @@ namespace BeatSaberVR
             BeatSaberVREvents.OnGameStart?.Invoke();
         }
 
-        public void UpdateScoreAndComboTexts(int score, int combo)
+        public void UpdateScoreAndComboTexts(int score)
         {
             scoreText.text = $"Score: {score}";
-            comboText.text = $"Combo: {combo}";
+        }
+
+        public void UpdateTimerText(float timeRemaining)
+        {
+            TimerText.text = $"Time: {timeRemaining:F1}s";
         }
 
         public void UpdateEnergyBar(float normalizedValue)
@@ -108,6 +116,13 @@ namespace BeatSaberVR
             if (energyBarFill == null) return;
             energyBarFill.fillAmount = normalizedValue;
             energyBarFill.color = Color.Lerp(Color.red, Color.green, normalizedValue);
+        }
+
+        public void UpdateFinanceRatesFill(float happy, float stress, float finance)
+        {
+            happinessFill.fillAmount = happy;
+            stressFill.fillAmount = stress;
+            financialFill.fillAmount = finance;
         }
 
         private void OnGameOverScreen(int finalScore)
@@ -120,10 +135,10 @@ namespace BeatSaberVR
         private void ToggleInGameUI(bool toggle)
         {
             scoreText.gameObject.SetActive(toggle);
-            comboText.gameObject.SetActive(toggle);
             fillCanvas.gameObject.SetActive(toggle);
         }
 
+        #region Sword Selection
         //-----Sword Selection-----
         private void SelectSword()
         {
@@ -182,6 +197,7 @@ namespace BeatSaberVR
             Swords selectedSword = (Swords)swordSelection.currentIndex;
             BeatSaberVREvents.OnSwordSelected?.Invoke(selectedSword);
         }
+        #endregion
     }
 
     [System.Serializable]

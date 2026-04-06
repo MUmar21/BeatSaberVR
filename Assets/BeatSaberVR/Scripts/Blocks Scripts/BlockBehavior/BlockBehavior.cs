@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace BeatSaberVR
 {
@@ -7,6 +8,8 @@ namespace BeatSaberVR
         [Header("References")]
         public Transform directionPoint;
         public GameObject defaultPoint;
+        public ChoiceData choiceData;
+        public TMP_Text choiceText;
 
         [Header("Block Settings")]
         public BlockColor blockColor;
@@ -93,7 +96,9 @@ namespace BeatSaberVR
             wasHit = true;
             GameManager.Instance.AddScore(100);
             AudioManager.Instance.PlaySlash();
-            BlockPoolManager.Instance.PlayCutParticle(transform.position, blockColor);
+            PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
+            if (PlayerFinanceManager.Instance != null && choiceData != null)
+                PlayerFinanceManager.Instance.ProcessChoice(choiceData, blockColor);
             BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
             SpawnCutPieces(saber.velocity);
@@ -141,8 +146,8 @@ namespace BeatSaberVR
                     break;
             }
 
-            BlockCutEffect halfA = BlockPoolManager.Instance.GetHalf(typeA, blockColor);
-            BlockCutEffect halfB = BlockPoolManager.Instance.GetHalf(typeB, blockColor);
+            BlockCutEffect halfA = PoolManager.Instance.GetHalf(typeA, blockColor);
+            BlockCutEffect halfB = PoolManager.Instance.GetHalf(typeB, blockColor);
 
             if (halfA == null || halfB == null) return;
 
@@ -197,7 +202,7 @@ namespace BeatSaberVR
 
         private void ReturnToPool()
         {
-            BlockPoolManager.Instance.ReturnBlock(this);
+            PoolManager.Instance.ReturnBlock(this);
         }
 
         public void ResetState()

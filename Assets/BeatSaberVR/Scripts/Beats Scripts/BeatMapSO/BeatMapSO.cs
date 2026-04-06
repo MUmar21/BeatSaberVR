@@ -16,8 +16,8 @@ namespace BeatSaberVR
     public class NoteData
     {
         public float time;
-        public int col;           // 0-3
-        public int row;           // 0-2
+        public int col;
+        public int row;
         public BlockColor color;
         public CutDirection cutDirection;
     }

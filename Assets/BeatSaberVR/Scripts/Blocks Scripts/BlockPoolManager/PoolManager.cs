@@ -4,7 +4,7 @@ namespace BeatSaberVR
 {
     public enum HalfType { Left, Right, Top, Bottom }
 
-    public class BlockPoolManager : Singleton<BlockPoolManager>
+    public class PoolManager : Singleton<PoolManager>
     {
         [Header("Block prefabs")]
         public BlockBehavior redBlockPrefab;

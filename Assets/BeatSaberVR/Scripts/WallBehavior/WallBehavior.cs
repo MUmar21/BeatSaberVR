@@ -23,7 +23,7 @@ namespace BeatSaberVR
             if (transform.position.z < -2f && !returned)
             {
                 returned = true;
-                BlockPoolManager.Instance.ReturnWall(this);
+                PoolManager.Instance.ReturnWall(this);
             }
         }
 

@@ -41,7 +41,7 @@ namespace BeatSaberVR
             else if (instance != null)
             {
                 Debug.LogWarning($"[Singleton] Instance of {typeof(T)} already exists. Destroying duplicate.");
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }

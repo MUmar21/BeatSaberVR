@@ -45,7 +45,7 @@ namespace BeatSaberVR
             audioSource.clip = beatMap.songClip;
 
             // Return all active blocks to pool so scene is clean
-            BlockPoolManager.Instance.ReturnAllActive();
+            PoolManager.Instance.ReturnAllActive();
 
             StartCoroutine(StartWithDelay(0.1f));
         }
@@ -100,14 +100,14 @@ namespace BeatSaberVR
             }
 
             // ── End of song ────────────────────────────────────────
-            if (!audioSource.isPlaying &&
-                noteIndex >= beatMap.notes.Count &&
-                obstacleIndex >= beatMap.obstacles.Count)
-            {
-                isPlaying = false;
-                BeatSaberVREvents.OnGameplayEnd?.Invoke();
-                Debug.Log("Song complete.");
-            }
+            //if (!audioSource.isPlaying &&
+            //    noteIndex >= beatMap.notes.Count &&
+            //    obstacleIndex >= beatMap.obstacles.Count)
+            //{
+            //    isPlaying = false;
+            //    BeatSaberVREvents.OnGameplayEnd?.Invoke();
+            //    Debug.Log("Song complete.");
+            //}
         }
 
         public void Pause() { audioSource.Pause(); isPlaying = false; }
