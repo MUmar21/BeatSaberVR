@@ -15,7 +15,6 @@ namespace BeatSaberVR
         [Header("Block Settings")]
         public BlockColor blockColor;
         public CutDirection cutDirection;
-        public float speed = 10f;
 
         private bool wasHit = false;
         private const float MIN_SWING_SPEED = 1.5f;
@@ -23,20 +22,25 @@ namespace BeatSaberVR
         [Header("Editor Testing Mouse MIN_SWING_SPEED")]
         [SerializeField] private float minSwingSpeed = 0.5f;
 
+        private BlockAppearAnimation appearAnimation;
+
+        private void Awake()
+        {
+            appearAnimation = GetComponent<BlockAppearAnimation>();
+            if (appearAnimation == null)
+            {
+                Debug.LogWarning("[BlockBehavior] BlockAppearAnimation component is missing!");
+            }
+        }
+
         private void OnEnable()
         {
             wasHit = false;
+            BeatSaberVREvents.OnChoiceMade += HandleChoiceMade;
         }
-
-        private void Update()
+        private void OnDisable()
         {
-            //transform.Translate(Vector3.back * speed * Time.deltaTime);
-
-            //if (transform.position.z < -1.5f && !wasHit)
-            //{
-            //    GameManager.Instance.RegisterMiss();
-            //    ReturnToPool();
-            //}
+            BeatSaberVREvents.OnChoiceMade -= HandleChoiceMade;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -68,6 +72,58 @@ namespace BeatSaberVR
             }
         }
 
+        private void OnGoodHit(SaberController saber)
+        {
+            wasHit = true;
+
+            if (GameManager.Instance == null || AudioManager.Instance == null || PoolManager.Instance == null || PlayerFinanceManager.Instance == null)
+            {
+                Debug.LogError("[BlockBehavior] One or more manager instances are missing! Cannot process good hit.");
+                return;
+            }
+
+            GameManager.Instance.AddScore(100);
+            AudioManager.Instance.PlaySlash();
+            PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
+            if (Data != null) PlayerFinanceManager.Instance.ProcessChoice(Data, blockColor);
+
+            BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
+
+            if (appearAnimation != null)
+            {
+                Vector3 velocity = saber.velocity;
+                appearAnimation.PlayPopOut(() =>
+                {
+                    SpawnCutPieces(velocity);
+                    ReturnToPool();
+                });
+            }
+            else
+            {
+                SpawnCutPieces(saber.velocity);
+                ReturnToPool();
+            }
+        }
+
+        private void OnBadHit(bool color, bool speed, bool dir)
+        {
+            wasHit = true;
+
+            if (!color) Debug.Log("Miss: Wrong saber color");
+            if (!speed) Debug.Log("Miss: Swung too slowly");
+            if (!dir) Debug.Log("Miss: Wrong direction");
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.RegisterMiss();
+
+            BeatSaberVREvents.OnChoiceMade?.Invoke();
+
+            if (appearAnimation != null)
+                appearAnimation.PlayPopOut(ReturnToPool);
+            else
+                ReturnToPool();
+        }
+
         private bool CheckDirection(Vector3 swingDir)
         {
             if (cutDirection == CutDirection.Any) return true;
@@ -90,38 +146,6 @@ namespace BeatSaberVR
                 CutDirection.Right => Vector3.right,
                 _ => Vector3.up
             };
-        }
-
-        private void OnGoodHit(SaberController saber)
-        {
-            wasHit = true;
-
-            if (GameManager.Instance == null || AudioManager.Instance == null || PoolManager.Instance == null || PlayerFinanceManager.Instance)
-            {
-                Debug.LogError("[BlockBehavior] One or more manager instances are missing! Cannot process good hit.");
-                return;
-            }
-
-            SpawnCutPieces(saber.velocity);
-            GameManager.Instance.AddScore(100);
-            AudioManager.Instance.PlaySlash();
-            PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
-            if (Data != null) PlayerFinanceManager.Instance.ProcessChoice(Data, blockColor);
-
-            BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
-
-            ReturnToPool();
-        }
-
-        private void OnBadHit(bool color, bool speed, bool dir)
-        {
-            if (!color) Debug.Log("Miss: Wrong saber color");
-            if (!speed) Debug.Log("Miss: Swung too slowly");
-            if (!dir) Debug.Log("Miss: Wrong direction");
-
-            if (GameManager.Instance != null)
-                GameManager.Instance.RegisterMiss();
-            ReturnToPool();
         }
 
         private void SpawnCutPieces(Vector3 saberVelocity)
@@ -169,52 +193,43 @@ namespace BeatSaberVR
             halfB.Launch(dirB, saberVelocity, typeB, blockColor);
         }
 
-        public void SetDirectionPoint(CutDirection cutDirection)
+        public void SetDirectionPoint(CutDirection dir)
         {
+            cutDirection = dir;
             if (directionPoint == null) return;
 
-            defaultPoint.SetActive(false);
+            bool isAny = dir == CutDirection.Any;
+            defaultPoint.SetActive(isAny);
+            directionPoint.gameObject.SetActive(!isAny);
 
-            float zAngle = 0f;
-            switch (cutDirection)
+            if (!isAny)
             {
-                case CutDirection.Up:
-                    zAngle = 0f;
-                    defaultPoint.SetActive(false);
-                    directionPoint.gameObject.SetActive(true);
-                    break;
-                case CutDirection.Down:
-                    zAngle = 180f;
-                    defaultPoint.SetActive(false);
-                    directionPoint.gameObject.SetActive(true);
-                    break;
-                case CutDirection.Left:
-                    zAngle = 90f;
-                    defaultPoint.SetActive(false);
-                    directionPoint.gameObject.SetActive(true);
-                    break;
-                case CutDirection.Right:
-                    zAngle = 270f;
-                    defaultPoint.SetActive(false);
-                    directionPoint.gameObject.SetActive(true);
-                    break;
-                case CutDirection.Any:
-                    defaultPoint.SetActive(true);
-                    directionPoint.gameObject.SetActive(false);
-                    break;
-                default:
-                    defaultPoint.SetActive(true);
-                    directionPoint.gameObject.SetActive(false);
-                    break;
+                float zAngle = dir switch
+                {
+                    CutDirection.Up => 0f,
+                    CutDirection.Down => 180f,
+                    CutDirection.Left => 90f,
+                    CutDirection.Right => 270f,
+                    _ => 0f
+                };
+                directionPoint.localRotation = Quaternion.Euler(0f, 0f, zAngle);
             }
+        }
 
-            directionPoint.localRotation = Quaternion.Euler(0f, 0f, zAngle);
+        private void HandleChoiceMade()
+        {
+            if (wasHit) return;
+
+            wasHit = true;
+            if (appearAnimation != null)
+                appearAnimation.PlayPopOut(ReturnToPool);
+            else
+                ReturnToPool();
         }
 
         private void ReturnToPool()
         {
-            if (PoolManager.Instance != null)
-                PoolManager.Instance.ReturnBlock(this);
+            PoolManager.Instance.ReturnBlock(this);
         }
 
         public void ResetState()

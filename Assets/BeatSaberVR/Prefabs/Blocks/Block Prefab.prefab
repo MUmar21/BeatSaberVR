@@ -53,11 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BlockBehavior
   directionPoint: {fileID: 357571944797122730}
   defaultPoint: {fileID: 9125309434282968892}
-  choiceData: {fileID: 0}
   choiceText: {fileID: 7471840334744340751}
   blockColor: 0
   cutDirection: 0
-  speed: 20
   minSwingSpeed: 0
 --- !u!114 &-4655861468180660384
 MonoBehaviour:
@@ -71,8 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281c541ebee4b9d42aac2f34ef30fa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
-  duration: 0.8
-  overshoot: 1.2
+  appearDuration: 0.35
+  popOvershoot: 1.5
+  hideDuration: 0.2
 --- !u!65 &1124153380242176813
 BoxCollider:
   m_ObjectHideFlags: 0

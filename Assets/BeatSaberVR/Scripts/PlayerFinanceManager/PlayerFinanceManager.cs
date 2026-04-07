@@ -47,6 +47,8 @@ namespace BeatSaberVR
                             data.redStressDelta,
                             data.redFinanceDelta);
             }
+
+            BeatSaberVREvents.OnChoiceMade?.Invoke();
         }
 
         private void ApplyDeltas(float happinessDelta, float stressDelta, float financeDelta)

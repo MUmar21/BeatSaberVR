@@ -3836,10 +3836,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockSpawner
   playerFinanceManager: {fileID: 1659358639}
-  spawnZ: 3
-  minSpawnDelay: 1
-  maxSpawnDelay: 5
-  numberOfOptionToSpawn: 2
+  spawnZ: 2.5
+  delayBetweenChoices: 2
 --- !u!1 &1659358637
 GameObject:
   m_ObjectHideFlags: 0
@@ -4206,10 +4204,10 @@ MonoBehaviour:
   blueHalfBottomPrefab: {fileID: 6478571614925477847, guid: a360842aa72af5d49b58dba861f50695, type: 3}
   cutParticleRedPrefab: {fileID: 1364611824762906074, guid: f6a4f3e34268ef44a8e294f1f1820887, type: 3}
   cutParticleBluePrefab: {fileID: 5071579407084112688, guid: 5aab22cc629a53b459e32a890b7caac9, type: 3}
-  blockPoolSize: 20
-  halfPoolSize: 20
-  particlePoolSize: 12
-  wallPoolSize: 8
+  blockPoolSize: 2
+  halfPoolSize: 2
+  particlePoolSize: 1
+  wallPoolSize: 0
 --- !u!4 &1782211239
 Transform:
   m_ObjectHideFlags: 0
@@ -4219,7 +4217,7 @@ Transform:
   m_GameObject: {fileID: 1782211237}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5515,6 +5513,6 @@ SceneRoots:
   - {fileID: 889410650}
   - {fileID: 28076131}
   - {fileID: 1018463982}
-  - {fileID: 1872031562}
   - {fileID: 1782211239}
+  - {fileID: 1872031562}
   - {fileID: 622548212}

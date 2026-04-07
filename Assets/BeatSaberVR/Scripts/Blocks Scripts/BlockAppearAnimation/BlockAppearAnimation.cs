@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace BeatSaberVR
 {
-    using DG.Tweening;
-
     public class BlockAppearAnimation : MonoBehaviour
     {
-        [Header("Appearance Timing")]
-        public float duration = 0.4f;
-        public float overshoot = 1.2f;
+        [Header("Appearance Settings")]
+        public float appearDuration = 0.35f;
+        public float popOvershoot = 1.5f;
 
-        private float targetY;
-        private Sequence appearSequence;
+        [Header("Disappear Settings")]
+        public float hideDuration = 0.25f;
 
+        private Sequence animationSequence;
         private BoxCollider blockCollider;
 
         private void Awake()
@@ -20,38 +20,46 @@ namespace BeatSaberVR
             blockCollider = GetComponent<BoxCollider>();
         }
 
-        void OnEnable()
+        private void OnEnable()
         {
             blockCollider.enabled = false;
-            PlayAppearAnimation();
-        }
-
-        public void PlayAppearAnimation()
-        {
-            appearSequence?.Kill();
-
-            targetY = transform.localPosition.y;
             transform.localScale = Vector3.zero;
 
-            Vector3 startPos = transform.localPosition;
-            transform.localPosition = startPos;
+            PlayPopIn();
+        }
 
-            transform.localRotation = Quaternion.Euler(45f, 0f, 25f);
+        public void PlayPopIn()
+        {
+            animationSequence?.Kill();
+            animationSequence = DOTween.Sequence();
 
-            appearSequence = DOTween.Sequence();
+            animationSequence.Join(transform.DOScale(Vector3.one, appearDuration)
+                .SetEase(Ease.OutBack, popOvershoot));
 
-            appearSequence.Join(transform.DOScale(Vector3.one, duration)
-                .SetEase(Ease.InOutBack, overshoot));
-
-            appearSequence.OnComplete(() =>
+            animationSequence.OnComplete(() =>
             {
                 blockCollider.enabled = true;
             });
         }
 
-        void OnDisable()
+        public void PlayPopOut(System.Action onComplete = null)
         {
-            appearSequence?.Kill();
+            blockCollider.enabled = false; // Prevent hits during animation
+            animationSequence?.Kill();
+            animationSequence = DOTween.Sequence();
+
+            animationSequence.Append(transform.DOScale(Vector3.one * 1.15f, hideDuration * 0.3f).SetEase(Ease.OutQuad));
+            animationSequence.Append(transform.DOScale(Vector3.zero, hideDuration * 0.7f).SetEase(Ease.InBack));
+
+            animationSequence.OnComplete(() =>
+            {
+                onComplete?.Invoke();
+            });
+        }
+
+        private void OnDisable()
+        {
+            animationSequence?.Kill();
         }
     }
 }
