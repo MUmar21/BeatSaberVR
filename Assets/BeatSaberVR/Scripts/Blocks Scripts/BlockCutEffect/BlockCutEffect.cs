@@ -73,7 +73,8 @@ namespace BeatSaberVR
                     mat.SetColor("_BaseColor", c);
                 }
 
-            PoolManager.Instance.ReturnHalf(this, myType, myColor);
+            if (PoolManager.Instance != null)
+                PoolManager.Instance.ReturnHalf(this, myType, myColor);
         }
     }
 }

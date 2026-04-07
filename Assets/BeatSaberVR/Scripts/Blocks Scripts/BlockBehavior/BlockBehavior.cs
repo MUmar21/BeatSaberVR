@@ -8,8 +8,9 @@ namespace BeatSaberVR
         [Header("References")]
         public Transform directionPoint;
         public GameObject defaultPoint;
-        public ChoiceData choiceData;
         public TMP_Text choiceText;
+
+        public ChoiceData Data { get; set; }
 
         [Header("Block Settings")]
         public BlockColor blockColor;
@@ -45,7 +46,7 @@ namespace BeatSaberVR
             SaberController saber = other.GetComponentInParent<SaberController>();
             if (saber == null)
             {
-                Debug.Log("Saber Is NULL Returning!!!");
+                Debug.LogWarning("[BlockBehavior] Saber Is NULL Returning!!!");
                 return;
             }
 
@@ -94,14 +95,21 @@ namespace BeatSaberVR
         private void OnGoodHit(SaberController saber)
         {
             wasHit = true;
+
+            if (GameManager.Instance == null || AudioManager.Instance == null || PoolManager.Instance == null || PlayerFinanceManager.Instance)
+            {
+                Debug.LogError("[BlockBehavior] One or more manager instances are missing! Cannot process good hit.");
+                return;
+            }
+
+            SpawnCutPieces(saber.velocity);
             GameManager.Instance.AddScore(100);
             AudioManager.Instance.PlaySlash();
             PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
-            if (PlayerFinanceManager.Instance != null && choiceData != null)
-                PlayerFinanceManager.Instance.ProcessChoice(choiceData, blockColor);
+            if (Data != null) PlayerFinanceManager.Instance.ProcessChoice(Data, blockColor);
+
             BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
-            SpawnCutPieces(saber.velocity);
             ReturnToPool();
         }
 
@@ -111,7 +119,8 @@ namespace BeatSaberVR
             if (!speed) Debug.Log("Miss: Swung too slowly");
             if (!dir) Debug.Log("Miss: Wrong direction");
 
-            GameManager.Instance.RegisterMiss();
+            if (GameManager.Instance != null)
+                GameManager.Instance.RegisterMiss();
             ReturnToPool();
         }
 
@@ -127,11 +136,13 @@ namespace BeatSaberVR
                     typeA = HalfType.Left; dirA = Vector3.left;
                     typeB = HalfType.Right; dirB = Vector3.right;
                     break;
+
                 case CutDirection.Left:
                 case CutDirection.Right:
                     typeA = HalfType.Top; dirA = Vector3.up;
                     typeB = HalfType.Bottom; dirB = Vector3.down;
                     break;
+
                 default: // Any — dot block
                     if (Mathf.Abs(saberVelocity.y) > Mathf.Abs(saberVelocity.x))
                     {
@@ -202,7 +213,8 @@ namespace BeatSaberVR
 
         private void ReturnToPool()
         {
-            PoolManager.Instance.ReturnBlock(this);
+            if (PoolManager.Instance != null)
+                PoolManager.Instance.ReturnBlock(this);
         }
 
         public void ResetState()
