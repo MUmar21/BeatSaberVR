@@ -1986,12 +1986,6 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   noGameOver: 0
   PlayGameOnStart: 0
-  maxEnergy: 200
-  startEnergy: 150
-  energyPerGoodHit: 4
-  energyPerMiss: -8
-  energyPerWallHit: -5
-  gameOverThreshold: 0
   levelTimeLimit: 120
   useLevelTimer: 1
 --- !u!1 &622548209
@@ -5076,7 +5070,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2d95061e2cd942c43941038241f77f71, type: 2}
   - {fileID: 11400000, guid: dac85869a1c00934fa73a94010aca42b, type: 2}
   - {fileID: 11400000, guid: 160e308ac4aff6d48b57313d4ef2888b, type: 2}
-  spawnZ: 20
+  - {fileID: 11400000, guid: 78b6945156223664c98bd288034fe806, type: 2}
+  - {fileID: 11400000, guid: 8dd2f9cf30d94b443b7542202c073f7d, type: 2}
+  - {fileID: 11400000, guid: 8bad175fa0d92a3449fa57c0cb7db9fe, type: 2}
+  - {fileID: 11400000, guid: 7ec67381d368baa45a4577e5c5a02223, type: 2}
+  - {fileID: 11400000, guid: 3261b629de60eef47be60c127e9f1b71, type: 2}
+  - {fileID: 11400000, guid: d0bd8f6c00c042a4e9de2f3ab7b19bcf, type: 2}
+  - {fileID: 11400000, guid: 3c864fb890521804fa2097f1209075b8, type: 2}
+  - {fileID: 11400000, guid: b0a0d425e8d188446b3b7458333f005f, type: 2}
+  - {fileID: 11400000, guid: 468439dfdea992c47b26f27e2b268e16, type: 2}
+  - {fileID: 11400000, guid: 2f66dd6db3be15949a74cc8824becfea, type: 2}
+  spawnZ: 3
   minSpawnDelay: 1
   maxSpawnDelay: 5
   numberOfOptionToSpawn: 2
@@ -5402,7 +5406,7 @@ GameObject:
   m_Layer: 0
   m_Name: Block Pool Manager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5445,7 +5449,7 @@ Transform:
   m_GameObject: {fileID: 1782211237}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

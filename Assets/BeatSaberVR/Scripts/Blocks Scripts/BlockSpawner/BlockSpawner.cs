@@ -49,6 +49,8 @@ namespace BeatSaberVR
 
                 currentChoiceIndex++;
             }
+
+            BeatSaberVREvents.OnTriggerGameOver?.Invoke();
             spawningCoroutine = null;
         }
 

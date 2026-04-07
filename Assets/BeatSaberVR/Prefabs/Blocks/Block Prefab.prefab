@@ -66,15 +66,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431760383055409618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 281c541ebee4b9d42aac2f34ef30fa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
   duration: 0.8
   overshoot: 1.2
-  rotationDelay: 0.5
-  groundY: 0.4
 --- !u!65 &1124153380242176813
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -29,13 +29,13 @@ namespace BeatSaberVR
 
         private void Update()
         {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
+            //transform.Translate(Vector3.back * speed * Time.deltaTime);
 
-            if (transform.position.z < -1.5f && !wasHit)
-            {
-                GameManager.Instance.RegisterMiss();
-                ReturnToPool();
-            }
+            //if (transform.position.z < -1.5f && !wasHit)
+            //{
+            //    GameManager.Instance.RegisterMiss();
+            //    ReturnToPool();
+            //}
         }
 
         private void OnTriggerEnter(Collider other)
