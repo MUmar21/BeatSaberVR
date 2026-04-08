@@ -10,7 +10,7 @@ namespace BeatSaberVR
         public GameObject defaultPoint;
         public TMP_Text choiceText;
 
-        public ChoiceData Data { get; set; }
+        public ChoiceDataEntry Data { get; set; }
 
         [Header("Block Settings")]
         public BlockColor blockColor;
@@ -36,11 +36,13 @@ namespace BeatSaberVR
         private void OnEnable()
         {
             wasHit = false;
-            BeatSaberVREvents.OnChoiceMade += HandleChoiceMade;
+            BeatSaberVREvents.OnChoiceMade += Return;
+            BeatSaberVREvents.OnGameplayEnd += Return;
         }
         private void OnDisable()
         {
-            BeatSaberVREvents.OnChoiceMade -= HandleChoiceMade;
+            BeatSaberVREvents.OnChoiceMade -= Return;
+            BeatSaberVREvents.OnGameplayEnd -= Return;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -82,12 +84,13 @@ namespace BeatSaberVR
                 return;
             }
 
-            GameManager.Instance.AddScore(100);
-            AudioManager.Instance.PlaySlash();
+            BeatSaberVREvents.OnAddScore?.Invoke(100);
+            BeatSaberVREvents.OnPlaySlashAudio?.Invoke();
+            BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
+
             PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
             if (Data != null) PlayerFinanceManager.Instance.ProcessChoice(Data, blockColor);
 
-            BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
             if (appearAnimation != null)
             {
@@ -112,9 +115,6 @@ namespace BeatSaberVR
             if (!color) Debug.Log("Miss: Wrong saber color");
             if (!speed) Debug.Log("Miss: Swung too slowly");
             if (!dir) Debug.Log("Miss: Wrong direction");
-
-            if (GameManager.Instance != null)
-                GameManager.Instance.RegisterMiss();
 
             BeatSaberVREvents.OnChoiceMade?.Invoke();
 
@@ -216,7 +216,7 @@ namespace BeatSaberVR
             }
         }
 
-        private void HandleChoiceMade()
+        private void Return()
         {
             if (wasHit) return;
 

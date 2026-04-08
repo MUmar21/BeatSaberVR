@@ -3,9 +3,9 @@ namespace BeatSaberVR
 {
     public static class LaneHelper
     {
-        private static readonly float[] colX = { -0.3f, 0.3f };
+        private static readonly float[] colX = { -0.45f, 0.45f };
 
-        private static readonly float[] rowY = { 1.1f, 1.1f };
+        private static readonly float[] rowY = { 1.3f, 1.3f };
 
         public static Vector3 GridToWorld(int col, int row, float zDepth)
         {

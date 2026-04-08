@@ -10,8 +10,11 @@ namespace BeatSaberVR
         public static Action OnTriggerGameOver;
         public static Action OnChoiceMade;
         public static Action<int> OnGameOver;
-        public static Action<BlockColor> OnBlockSpawned;
+        public static Action<int> OnAddScore;
         public static Action<BlockColor> OnBlockCut;
         public static Action<Swords> OnSwordSelected;
+
+        //Audio events
+        public static Action OnPlaySlashAudio;
     }
 }

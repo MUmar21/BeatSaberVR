@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7b87f018f45234f977052cc4ba2e79, type: 3}
+  m_Name: ChoiceData
+  m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.ChoiceData
+  ChoiceEntries:
+  - greenText: Save Money
+    greenHappinessDelta: 0.2
+    greenStressDelta: 0.1
+    greenFinanceDelta: 0.5
+    redText: Buy Luxury Car
+    redHappinessDelta: 0.5
+    redStressDelta: 0.3
+    redFinanceDelta: -0.5
+  - greenText: Invest in Stocks
+    greenHappinessDelta: 0.2
+    greenStressDelta: 0.21
+    greenFinanceDelta: 0.41
+    redText: Keep Cash in Mattress
+    redHappinessDelta: 0.15
+    redStressDelta: -0.17
+    redFinanceDelta: -0.27
+  - greenText: Build Emergency Fund
+    greenHappinessDelta: 0.2
+    greenStressDelta: -0.1
+    greenFinanceDelta: 0.4
+    redText: Spend on Luxury Watch
+    redHappinessDelta: 0.5
+    redStressDelta: 0.3
+    redFinanceDelta: -0.2
+  - greenText: Buy Health Insurance
+    greenHappinessDelta: 0.4
+    greenStressDelta: -0.5
+    greenFinanceDelta: -0.3
+    redText: Take the Risk
+    redHappinessDelta: 0.1
+    redStressDelta: 0.6
+    redFinanceDelta: 0.2
+  - greenText: Invest For Future
+    greenHappinessDelta: 0.4
+    greenStressDelta: -0.3
+    greenFinanceDelta: -0.3
+    redText: Take High Interrest Loan
+    redHappinessDelta: 0.1
+    redStressDelta: 0.5
+    redFinanceDelta: 0.4

@@ -14,15 +14,30 @@ namespace BeatSaberVR
 
         private Sequence animationSequence;
         private BoxCollider blockCollider;
+        private Vector3 defaultScale;
+        private bool isScaleCaptured = false;
 
         private void Awake()
         {
             blockCollider = GetComponent<BoxCollider>();
+            CaptureDefaultScale();
+        }
+
+        private void CaptureDefaultScale()
+        {
+            if (!isScaleCaptured)
+            {
+                defaultScale = transform.localScale;
+                isScaleCaptured = true;
+            }
         }
 
         private void OnEnable()
         {
+            CaptureDefaultScale();
+
             blockCollider.enabled = false;
+
             transform.localScale = Vector3.zero;
 
             PlayPopIn();
@@ -33,7 +48,7 @@ namespace BeatSaberVR
             animationSequence?.Kill();
             animationSequence = DOTween.Sequence();
 
-            animationSequence.Join(transform.DOScale(Vector3.one, appearDuration)
+            animationSequence.Join(transform.DOScale(defaultScale, appearDuration)
                 .SetEase(Ease.OutBack, popOvershoot));
 
             animationSequence.OnComplete(() =>
@@ -44,11 +59,11 @@ namespace BeatSaberVR
 
         public void PlayPopOut(System.Action onComplete = null)
         {
-            blockCollider.enabled = false; // Prevent hits during animation
+            blockCollider.enabled = false;
             animationSequence?.Kill();
             animationSequence = DOTween.Sequence();
 
-            animationSequence.Append(transform.DOScale(Vector3.one * 1.15f, hideDuration * 0.3f).SetEase(Ease.OutQuad));
+            animationSequence.Append(transform.DOScale(defaultScale * 1.15f, hideDuration * 0.3f).SetEase(Ease.OutQuad));
             animationSequence.Append(transform.DOScale(Vector3.zero, hideDuration * 0.7f).SetEase(Ease.InBack));
 
             animationSequence.OnComplete(() =>
@@ -60,6 +75,7 @@ namespace BeatSaberVR
         private void OnDisable()
         {
             animationSequence?.Kill();
+            transform.localScale = defaultScale;
         }
     }
 }

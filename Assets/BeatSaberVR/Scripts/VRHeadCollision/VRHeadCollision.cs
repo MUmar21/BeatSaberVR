@@ -25,7 +25,7 @@ namespace BeatSaberVR
 
             lastHitTime = Time.unscaledTime;
 
-            GameManager.Instance.RegisterWallHit();
+            //GameManager.Instance.RegisterWallHit();
         }
     }
 }

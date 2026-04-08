@@ -2684,7 +2684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0361078e3943ac048a4bb70c27787e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSetupPosition
-  startPosition: {x: 0, y: -0.18, z: 1.2}
+  startPosition: {x: 0, y: 0, z: 1.2}
 --- !u!114 &3563885309833114155
 MonoBehaviour:
   m_ObjectHideFlags: 0

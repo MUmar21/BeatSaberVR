@@ -350,6 +350,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 107883421454666340, guid: 8f2c0e258064b664589e71c41fe6a26f, type: 3}
+    - {fileID: 1311816566272045087, guid: 8f2c0e258064b664589e71c41fe6a26f, type: 3}
+    - {fileID: 9302340152524967, guid: 8f2c0e258064b664589e71c41fe6a26f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -587,7 +589,7 @@ GameObject:
   - component: {fileID: 188620639}
   - component: {fileID: 188620638}
   m_Layer: 5
-  m_Name: Finance Rating Canvas
+  m_Name: User Rating Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,8 +603,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188620636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.655}
-  m_LocalScale: {x: 0.025817337, y: 0.009549373, z: 0.0031143997}
+  m_LocalPosition: {x: 0, y: 0, z: 4.27}
+  m_LocalScale: {x: 0.015168201, y: 0.0056104474, z: 0.0018297721}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1393847184}
@@ -610,7 +612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3.51}
+  m_AnchoredPosition: {x: 0, y: 4.19}
   m_SizeDelta: {x: 456.9475, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188620638
@@ -1077,7 +1079,7 @@ GameObject:
   - component: {fileID: 470589527}
   - component: {fileID: 470589530}
   m_Layer: 5
-  m_Name: Panel Canvas
+  m_Name: Panels Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1504,7 +1506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.GameManager
   dontDestroyOnLoad: 0
-  noGameOver: 0
   PlayGameOnStart: 0
   levelTimeLimit: 120
   useLevelTimer: 1
@@ -1623,7 +1624,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631041167}
   m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 3.903}
+  m_LocalPosition: {x: 0, y: 0, z: 3.07}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1632,7 +1633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.639, y: 1.4}
+  m_AnchoredPosition: {x: 2.09, y: 2.78}
   m_SizeDelta: {x: 700, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631041169
@@ -2426,7 +2427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045853938159607320, guid: 2a271e4c8ec59c248900f0d2da2087c1, type: 3}
       propertyPath: m_Name
-      value: Happiness (2)
+      value: Financial Stability
       objectReference: {fileID: 0}
     - target: {fileID: 6311981212218360924, guid: 2a271e4c8ec59c248900f0d2da2087c1, type: 3}
       propertyPath: m_Pivot.x
@@ -3836,8 +3837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockSpawner
   playerFinanceManager: {fileID: 1659358639}
-  spawnZ: 2.5
-  delayBetweenChoices: 2
+  spawnZ: 2.4
+  delayBetweenChoices: 3
 --- !u!1 &1659358637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,20 +3884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.PlayerFinanceManager
   dontDestroyOnLoad: 0
-  choiceDatas:
-  - {fileID: 11400000, guid: 78b6945156223664c98bd288034fe806, type: 2}
-  - {fileID: 11400000, guid: 8dd2f9cf30d94b443b7542202c073f7d, type: 2}
-  - {fileID: 11400000, guid: 8bad175fa0d92a3449fa57c0cb7db9fe, type: 2}
-  - {fileID: 11400000, guid: 7ec67381d368baa45a4577e5c5a02223, type: 2}
-  - {fileID: 11400000, guid: 3261b629de60eef47be60c127e9f1b71, type: 2}
-  - {fileID: 11400000, guid: d0bd8f6c00c042a4e9de2f3ab7b19bcf, type: 2}
-  - {fileID: 11400000, guid: 3c864fb890521804fa2097f1209075b8, type: 2}
-  - {fileID: 11400000, guid: b0a0d425e8d188446b3b7458333f005f, type: 2}
-  - {fileID: 11400000, guid: 468439dfdea992c47b26f27e2b268e16, type: 2}
-  - {fileID: 11400000, guid: 2f66dd6db3be15949a74cc8824becfea, type: 2}
-  - {fileID: 11400000, guid: 6256c48084552574b94b1437da2422cc, type: 2}
-  - {fileID: 11400000, guid: 840fbcb53b9c0a84d8f75e11d2a6d10a, type: 2}
-  - {fileID: 11400000, guid: dac85869a1c00934fa73a94010aca42b, type: 2}
+  choiceDatas: {fileID: 11400000, guid: 75f5e5d7dda4fc74d9d9eea463bf19d0, type: 2}
   startingHappiness: 0.5
   startingStress: 0.3
   startingBalance: 0.5
@@ -4217,7 +4205,7 @@ Transform:
   m_GameObject: {fileID: 1782211237}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 2.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4551,15 +4539,13 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   startPanel: {fileID: 738893970}
   gameOverPanel: {fileID: 141135906}
-  swordSelectionPanel: {fileID: 263445158}
   scoreText: {fileID: 33061929}
-  TimerText: {fileID: 1558966610}
+  timerText: {fileID: 1558966610}
   startButton: {fileID: 749647064}
   replayButton: {fileID: 1314675550}
-  fillCanvas: {fileID: 2043553559}
-  energyBarFill: {fileID: 367408353}
   finalScoreText: {fileID: 684567354}
   gameOverTitleText: {fileID: 1102847599}
+  userRatingCanvas: {fileID: 188620636}
   happinessFill: {fileID: 381665747478620233}
   stressFill: {fileID: 101905678}
   financialFill: {fileID: 935892168}
@@ -4645,11 +4631,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 470589526}
   - {fileID: 1961866370}
   - {fileID: 631041168}
-  - {fileID: 2043553560}
   - {fileID: 188620637}
-  - {fileID: 470589526}
+  - {fileID: 2043553560}
   - {fileID: 263445159}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4680,17 +4666,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961866369}
-  m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 3.903}
+  m_LocalRotation: {x: 0, y: -0.13052624, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 3.07}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 33061927}
   m_Father: {fileID: 1898920540}
-  m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -15, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.639, y: 1.4}
+  m_AnchoredPosition: {x: -2.09, y: 2.78}
   m_SizeDelta: {x: 700, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961866371

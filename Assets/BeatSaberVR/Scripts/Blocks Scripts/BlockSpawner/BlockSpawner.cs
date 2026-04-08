@@ -57,7 +57,7 @@ namespace BeatSaberVR
             if (GameManager.Instance == null || !GameManager.Instance.GameplayStarted)
                 yield break;
 
-            if (currentChoiceIndex >= playerFinanceManager.choiceDatas.Length)
+            if (currentChoiceIndex >= playerFinanceManager.choiceDatas.ChoiceEntries.Length)
             {
                 BeatSaberVREvents.OnTriggerGameOver?.Invoke();
                 yield break;
@@ -79,15 +79,13 @@ namespace BeatSaberVR
             block.blockColor = color;
             block.cutDirection = dir;
 
-            var choice = playerFinanceManager.choiceDatas[currentChoiceIndex];
+            var choice = playerFinanceManager.choiceDatas.ChoiceEntries[currentChoiceIndex];
             block.Data = choice;
 
             block.choiceText.text = (color == BlockColor.Blue) ? choice.greenText : choice.redText;
 
             block.gameObject.SetActive(true);
             block.SetDirectionPoint(dir);
-
-            BeatSaberVREvents.OnBlockSpawned?.Invoke(color);
         }
 
         //public void SpawnWall(int col, int width, float zDepth)

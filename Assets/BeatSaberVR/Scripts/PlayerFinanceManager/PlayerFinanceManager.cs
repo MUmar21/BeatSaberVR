@@ -5,7 +5,7 @@ namespace BeatSaberVR
 {
     public class PlayerFinanceManager : Singleton<PlayerFinanceManager>
     {
-        [SerializeField] public ChoiceData[] choiceDatas;
+        [SerializeField] public ChoiceData choiceDatas;
 
         [Header("Starting Values (0–1)")]
         [Range(0f, 1f)][SerializeField] private float startingHappiness = 0.5f;
@@ -33,7 +33,7 @@ namespace BeatSaberVR
             NotifyUI();
         }
 
-        public void ProcessChoice(ChoiceData data, BlockColor blockColor)
+        public void ProcessChoice(ChoiceDataEntry data, BlockColor blockColor)
         {
             if (blockColor == BlockColor.Blue)
             {

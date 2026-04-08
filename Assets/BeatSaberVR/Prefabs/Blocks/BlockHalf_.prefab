@@ -140,7 +140,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7679058664083850959}
@@ -186,10 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6cc8adc6a1ce84c9a66c3f35f7b5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockCutEffect
-  flyForce: 4
-  upwardForce: 2
-  spinForce: 300
-  lifetime: 0.6
+  flyForce: 2
+  upwardForce: 1
+  spinForce: 200
+  lifetime: 0.8
 --- !u!1001 &454922498862736283
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.8, y: 1.8, z: 0.5}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5650624658925618401}
   - {fileID: 357571944797122730}
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.BlockAppearAnimation
   appearDuration: 0.35
   popOvershoot: 1.5
-  hideDuration: 0.2
+  hideDuration: 0.3
 --- !u!65 &1124153380242176813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,9 +147,9 @@ Transform:
   m_GameObject: {fileID: 5712772704226121580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0726, z: -0.1215}
-  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0, y: 0.2359, z: -0.1215}
+  m_LocalScale: {x: 1.1556, y: 1.1556, z: 3.2649164}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5096827229490999913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -236,16 +236,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6155889568961858056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.178}
-  m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: -0.125}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5096827229490999913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0004, y: 0.011}
-  m_SizeDelta: {x: 0.56, y: 0.111}
+  m_AnchoredPosition: {x: -0.0004, y: 0.03875}
+  m_SizeDelta: {x: 0.65, y: 0.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8900933216480125867
 MeshRenderer:
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
+  m_fontSize: 1.2
   m_fontSizeBase: 0.65
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 7943451881266215290}
   - component: {fileID: 1816101326732852071}
   m_Layer: 6
-  m_Name: Dot
+  m_Name: 'Any '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,7 +418,7 @@ Transform:
   m_GameObject: {fileID: 9125309434282968892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000000029802, y: 0.0577, z: -0.1254}
+  m_LocalPosition: {x: -0.000000029802, y: 0.2128, z: -0.1254}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
