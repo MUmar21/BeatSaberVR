@@ -5,20 +5,33 @@ namespace BeatSaberVR
     {
         public AudioSource sfxSource;
         public AudioClip slashClip;
+        public AudioClip missClip;
 
         private void OnEnable()
         {
-            BeatSaberVREvents.OnPlaySlashAudio += PlaySlash;
+            BeatSaberVREvents.OnBlockCut += PlaySlash;
+            BeatSaberVREvents.OnBlockMiss += PlayMiss;
         }
 
         private void OnDisable()
         {
-            BeatSaberVREvents.OnPlaySlashAudio -= PlaySlash;
+            BeatSaberVREvents.OnBlockCut -= PlaySlash;
+            BeatSaberVREvents.OnBlockMiss -= PlayMiss;
         }
 
-        public void PlaySlash()
+        public void PlaySlash(BlockColor color)
         {
-            if (slashClip != null) sfxSource.PlayOneShot(slashClip);
+            PlaySfx(slashClip);
+        }
+
+        public void PlayMiss()
+        {
+            PlaySfx(missClip);
+        }
+
+        private void PlaySfx(AudioClip clip)
+        {
+            if (clip != null) sfxSource.PlayOneShot(clip);
         }
     }
 }

@@ -84,7 +84,6 @@ namespace BeatSaberVR
                 return;
             }
 
-            BeatSaberVREvents.OnPlaySlashAudio?.Invoke();
             BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
             PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
@@ -117,6 +116,7 @@ namespace BeatSaberVR
             if (!dir) Debug.Log("Miss: Wrong direction");
 
             BeatSaberVREvents.OnChoiceMade?.Invoke();
+            BeatSaberVREvents.OnBlockMiss?.Invoke();
 
             if (appearAnimation != null)
                 appearAnimation.PlayPopOut(ReturnToPool);
