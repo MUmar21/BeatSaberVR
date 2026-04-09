@@ -31,14 +31,26 @@ PrefabInstance:
     - target: {fileID: 1769972136401219790, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: trailMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
+      objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
+    - target: {fileID: 2476285458514449737, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: collisionEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2765502167902398777, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_Name
       value: LeftSaber Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3763459967612125120, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: collisionEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5159640335833812267, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368008257397429661, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: collisionEffect
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8548567910301610074, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: trailMaterial
@@ -59,6 +71,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8373532428585398031, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+    - {fileID: 3128964026661278031, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83d328b048613349b8a3446ddd718fa, type: 3}

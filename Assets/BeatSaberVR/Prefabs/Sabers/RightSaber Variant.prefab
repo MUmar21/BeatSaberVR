@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 735ca41ec45d75b4aa65f3abfacb208d, type: 2}
+    - target: {fileID: 1525220122898687190, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6adc3f36cf95a8a41b4887cd0350238b, type: 2}
     - target: {fileID: 1664795827226766164, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -79,7 +83,11 @@ PrefabInstance:
     - target: {fileID: 1769972136401219790, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: trailMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: d35d12c71542b3947b661aa7aecd8e24, type: 2}
+      objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
+    - target: {fileID: 2107908152831962343, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: collisionEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2157106946030592860, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -88,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightSaber Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2957686543263717572, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: saberColor
       value: 1
@@ -95,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: swordDatas.Array.data[0].gameObject
       value: 
-      objectReference: {fileID: 1949832616221590089}
+      objectReference: {fileID: 7750991374815375399}
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: swordDatas.Array.data[1].gameObject
       value: 
@@ -104,6 +116,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4c2118f5e4651d04c88f2d1c37b4f3d6, type: 2}
+    - target: {fileID: 6264602514578901996, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8263123231027845130, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
@@ -124,6 +140,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8820788071516102528, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.59607846
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820788071516102528, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820788071516102528, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.9960785
+      objectReference: {fileID: 0}
     - target: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
@@ -141,6 +169,7 @@ PrefabInstance:
     - {fileID: 8373532428585398031, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
     - {fileID: 5159640335833812267, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
     - {fileID: 2938996128427722465, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+    - {fileID: 3128964026661278031, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       insertIndex: 1
@@ -150,11 +179,6 @@ PrefabInstance:
       addedObject: {fileID: 1951509712997370606}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
---- !u!198 &3474069059092492521 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8263123231027845130, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
-  m_PrefabInstance: {fileID: 4799392080916080867}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4124398098422493401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
@@ -163,6 +187,11 @@ Transform:
 --- !u!82 &4813540916045526492 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 24765807462505791, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+  m_PrefabInstance: {fileID: 4799392080916080867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7750991374815375399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2957686543263717572, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
   m_PrefabInstance: {fileID: 4799392080916080867}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7260405864809889543
@@ -219,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9209041851569159502, guid: 475c3a920e6b2cf4da60089949b1d946, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -254,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5456f352344784d8c2a11dcc4571bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
-  collisionEffect: {fileID: 3474069059092492521}
+  collisionEffect: {fileID: 0}
   sfx: {fileID: 4813540916045526492}
 --- !u!114 &5232699714731259881
 MonoBehaviour:
@@ -358,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5456f352344784d8c2a11dcc4571bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
-  collisionEffect: {fileID: 3474069059092492521}
+  collisionEffect: {fileID: 0}
   sfx: {fileID: 4813540916045526492}
 --- !u!114 &8847697389662053949
 MonoBehaviour:
