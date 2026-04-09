@@ -54,6 +54,7 @@ MonoBehaviour:
   directionPoint: {fileID: 357571944797122730}
   defaultPoint: {fileID: 9125309434282968892}
   choiceText: {fileID: 7471840334744340751}
+  speed: 0.5
   blockColor: 0
   cutDirection: 0
   minSwingSpeed: 0

@@ -11,6 +11,7 @@ namespace BeatSaberVR
         [Range(0f, 1f)][SerializeField] private float startingHappiness = 0.5f;
         [Range(0f, 1f)][SerializeField] private float startingStress = 0.3f;
         [Range(0f, 1f)][SerializeField] private float startingBalance = 0.5f;
+        [SerializeField] private int baseScore = 10;
 
         public float CurrentHappiness { get; private set; }
         public float CurrentStress { get; private set; }
@@ -66,15 +67,23 @@ namespace BeatSaberVR
 
         private void ApplyDeltas(float happinessDelta, float stressDelta, float financeDelta)
         {
-            previousStress = CurrentStress;
-            CurrentHappiness = happinessDelta;
-            CurrentStress = stressDelta;
-            CurrentBalance = financeDelta;
-            Debug.Log($"[Finance] H:{CurrentHappiness:P0}  S:{CurrentStress:P0}  B:{CurrentBalance:P0}");
+            CurrentHappiness = Mathf.Clamp01(happinessDelta);
+            CurrentStress = Mathf.Clamp01(stressDelta);
+            CurrentBalance = Mathf.Clamp01(financeDelta);
 
-            float baseReward = 20f;
-            float stressFactor = 0.5f - CurrentStress;
-            int finalPoints = Mathf.RoundToInt(baseReward * (stressFactor * 2f));
+            Debug.Log($"[Finance] H:{CurrentHappiness:P0} S:{CurrentStress:P0} B:{CurrentBalance:P0}");
+
+            // Happiness and Balance are rewards; Stress is a heavy penalty.
+            float weightHappiness = 0.5f;
+            float weightFinance = 0.5f;
+            float weightStress = -0.4f;
+            float performanceFactor = (CurrentHappiness * weightHappiness) +
+                                      (CurrentBalance * weightFinance) +
+                                      (CurrentStress * weightStress);
+
+            performanceFactor = Math.Max(0, performanceFactor);
+            int finalPoints = Mathf.RoundToInt(baseScore + (performanceFactor * 100f));
+
             BeatSaberVREvents.OnAddScore?.Invoke(finalPoints);
             NotifyUI();
         }

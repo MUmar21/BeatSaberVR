@@ -2590,9 +2590,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.PlayerFinanceManager
   dontDestroyOnLoad: 0
   choiceDatas: {fileID: 11400000, guid: 75f5e5d7dda4fc74d9d9eea463bf19d0, type: 2}
-  startingHappiness: 0.5
-  startingStress: 0.1
-  startingBalance: 0.5
+  startingHappiness: 0
+  startingStress: 0
+  startingBalance: 0
+  baseScore: 10
 --- !u!1001 &309458783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9645,7 +9646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockSpawner
   playerFinanceManager: {fileID: 306711673}
-  spawnZ: 2.4
+  spawnZ: 17
   delayBetweenChoices: 3
 --- !u!1001 &951654434
 PrefabInstance:
@@ -10188,7 +10189,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 0.75
   Loop: 0
   Mute: 0
@@ -15572,7 +15573,7 @@ Transform:
   m_GameObject: {fileID: 1546945991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.4}
+  m_LocalPosition: {x: 0, y: 0, z: 17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

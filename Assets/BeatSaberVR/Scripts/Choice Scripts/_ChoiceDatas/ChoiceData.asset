@@ -22,11 +22,11 @@ MonoBehaviour:
     redStressDelta: 0.3
     redFinanceDelta: 0.3
   - greenText: Invest in Stocks
-    greenHappinessDelta: 0.2
-    greenStressDelta: 0.1
+    greenHappinessDelta: 0.3
+    greenStressDelta: 0.2
     greenFinanceDelta: 0.5
     redText: Keep Cash in Mattress
-    redHappinessDelta: 0.15
+    redHappinessDelta: 0.2
     redStressDelta: 0.4
     redFinanceDelta: 0.3
   - greenText: Build Emergency Fund
@@ -39,7 +39,7 @@ MonoBehaviour:
     redFinanceDelta: 0.1
   - greenText: Buy Health Insurance
     greenHappinessDelta: 0.4
-    greenStressDelta: 0.1
+    greenStressDelta: 0.15
     greenFinanceDelta: 0.2
     redText: Take the Risk
     redHappinessDelta: 0.1
@@ -47,7 +47,7 @@ MonoBehaviour:
     redFinanceDelta: 0.5
   - greenText: Invest For Future
     greenHappinessDelta: 0.4
-    greenStressDelta: 0.1
+    greenStressDelta: 0.25
     greenFinanceDelta: 0.5
     redText: Take High Interrest Loan
     redHappinessDelta: 0.1

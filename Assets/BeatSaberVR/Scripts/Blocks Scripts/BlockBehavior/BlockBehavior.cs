@@ -13,6 +13,7 @@ namespace BeatSaberVR
         public ChoiceDataEntry Data { get; set; }
 
         [Header("Block Settings")]
+        [SerializeField] private float speed = 5f;
         public BlockColor blockColor;
         public CutDirection cutDirection;
 
@@ -45,6 +46,16 @@ namespace BeatSaberVR
             BeatSaberVREvents.OnGameplayEnd -= Return;
         }
 
+        private void Update()
+        {
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
+
+            if (transform.position.z < -1.5f && !wasHit)
+            {
+                OnMissHit(null);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (wasHit) return;
@@ -70,20 +81,19 @@ namespace BeatSaberVR
             }
             else
             {
-                OnBadHit(colorMatch, fastEnough, directionCorrect);
+                OnMissHit(saber);
             }
         }
 
         private void OnGoodHit(SaberController saber)
         {
-            wasHit = true;
-
             if (GameManager.Instance == null || AudioManager.Instance == null || PoolManager.Instance == null || PlayerFinanceManager.Instance == null)
             {
                 Debug.LogError("[BlockBehavior] One or more manager instances are missing! Cannot process good hit.");
                 return;
             }
 
+            wasHit = true;
             BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
             PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
@@ -91,37 +101,19 @@ namespace BeatSaberVR
 
             SpawnCutPieces(saber.velocity);
             ReturnToPool();
-            //if (appearAnimation != null)
-            //{
-            //    Vector3 velocity = saber.velocity;
-            //    appearAnimation.PlayPopOut(() =>
-            //    {
-            //        SpawnCutPieces(velocity);
-            //        ReturnToPool();
-            //    });
-            //}
-            //else
-            //{
-            //    SpawnCutPieces(saber.velocity);
-            //    ReturnToPool();
-            //}
         }
 
-        private void OnBadHit(bool color, bool speed, bool dir)
+        private void OnMissHit(SaberController saber)
         {
             wasHit = true;
-
-            if (!color) Debug.Log("Miss: Wrong saber color");
-            if (!speed) Debug.Log("Miss: Swung too slowly");
-            if (!dir) Debug.Log("Miss: Wrong direction");
-
             BeatSaberVREvents.OnChoiceMade?.Invoke();
             BeatSaberVREvents.OnBlockMiss?.Invoke();
+            if (saber != null) SpawnCutPieces(saber.velocity);
+            ReturnToPool();
 
-            if (appearAnimation != null)
-                appearAnimation.PlayPopOut(ReturnToPool);
-            else
-                ReturnToPool();
+            //if (!color) Debug.Log("Miss: Wrong saber color");
+            //if (!speed) Debug.Log("Miss: Swung too slowly");
+            //if (!dir) Debug.Log("Miss: Wrong direction");
         }
 
         private bool CheckDirection(Vector3 swingDir)

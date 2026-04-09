@@ -59,8 +59,10 @@ namespace BeatSaberVR
 
             if (currentChoiceIndex >= playerFinanceManager.choiceDatas.ChoiceEntries.Length)
             {
-                BeatSaberVREvents.OnTriggerGameOver?.Invoke();
-                yield break;
+                // Reset to loop choices, or end the game here.
+                //BeatSaberVREvents.OnTriggerGameOver?.Invoke();
+                //yield break;
+                currentChoiceIndex = 0;
             }
 
             SpawnBlock(0, 0, BlockColor.Blue, (CutDirection)Random.Range(0, 4));
