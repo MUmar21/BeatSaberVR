@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: saberColor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: swordDatas.Array.data[0].gameObject

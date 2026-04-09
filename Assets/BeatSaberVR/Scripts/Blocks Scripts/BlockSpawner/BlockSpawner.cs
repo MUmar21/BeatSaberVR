@@ -63,8 +63,8 @@ namespace BeatSaberVR
                 yield break;
             }
 
-            SpawnBlock(0, 0, BlockColor.Red, (CutDirection)Random.Range(0, 4));
-            SpawnBlock(1, 0, BlockColor.Blue, (CutDirection)Random.Range(0, 4));
+            SpawnBlock(0, 0, BlockColor.Blue, (CutDirection)Random.Range(0, 4));
+            SpawnBlock(1, 0, BlockColor.Red, (CutDirection)Random.Range(0, 4));
         }
 
         public void SpawnBlock(int col, int row, BlockColor color, CutDirection dir)

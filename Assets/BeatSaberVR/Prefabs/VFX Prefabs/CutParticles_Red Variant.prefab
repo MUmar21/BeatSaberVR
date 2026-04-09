@@ -22,23 +22,35 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 50a3f0e05680536468cfc21dff0b1798, type: 2}
     - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.ctime1
-      value: 65021
+      value: 64764
       objectReference: {fileID: 0}
     - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b
-      value: 0.040880322
+      value: 0.361635
       objectReference: {fileID: 0}
     - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.040880322
+      value: 0.41822705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
-      value: 0.039215688
+      value: 0.361635
       objectReference: {fileID: 0}
     - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.g
-      value: 0.039215688
+      value: 0.41822705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194302882071136077, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6555727695660869657, guid: b153a44d2a7d32c4b9c4e16f7b85b1a0, type: 3}
       propertyPath: m_LocalPosition.x

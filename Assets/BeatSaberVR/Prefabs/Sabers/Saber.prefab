@@ -149,7 +149,7 @@ MonoBehaviour:
     gameObject: {fileID: 6264602514578901996}
   - sword: 1
     gameObject: {fileID: 5159640335833812267}
-  saberColor: 0
+  saberColor: 1
   velocity: {x: 0, y: 0, z: 0}
   swingDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1769972136401219790
