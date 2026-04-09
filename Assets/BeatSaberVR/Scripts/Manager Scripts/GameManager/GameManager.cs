@@ -78,6 +78,7 @@ namespace BeatSaberVR
             if (isGameOver) return;
 
             score += points;
+            score = (score < 0) ? 0 : score;
             UIManager.Instance.UpdateScoreAndComboTexts(score);
         }
 

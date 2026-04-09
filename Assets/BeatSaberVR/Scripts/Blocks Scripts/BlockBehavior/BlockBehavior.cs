@@ -84,28 +84,28 @@ namespace BeatSaberVR
                 return;
             }
 
-            BeatSaberVREvents.OnAddScore?.Invoke(100);
             BeatSaberVREvents.OnPlaySlashAudio?.Invoke();
             BeatSaberVREvents.OnBlockCut?.Invoke(blockColor);
 
             PoolManager.Instance.PlayCutParticle(transform.position, blockColor);
             if (Data != null) PlayerFinanceManager.Instance.ProcessChoice(Data, blockColor);
 
-
-            if (appearAnimation != null)
-            {
-                Vector3 velocity = saber.velocity;
-                appearAnimation.PlayPopOut(() =>
-                {
-                    SpawnCutPieces(velocity);
-                    ReturnToPool();
-                });
-            }
-            else
-            {
-                SpawnCutPieces(saber.velocity);
-                ReturnToPool();
-            }
+            SpawnCutPieces(saber.velocity);
+            ReturnToPool();
+            //if (appearAnimation != null)
+            //{
+            //    Vector3 velocity = saber.velocity;
+            //    appearAnimation.PlayPopOut(() =>
+            //    {
+            //        SpawnCutPieces(velocity);
+            //        ReturnToPool();
+            //    });
+            //}
+            //else
+            //{
+            //    SpawnCutPieces(saber.velocity);
+            //    ReturnToPool();
+            //}
         }
 
         private void OnBadHit(bool color, bool speed, bool dir)

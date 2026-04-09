@@ -376,10 +376,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 152861741702669403, guid: 2a271e4c8ec59c248900f0d2da2087c1, type: 3}
-      propertyPath: m_FillAmount
-      value: 0.459
-      objectReference: {fileID: 0}
     - target: {fileID: 1235077519998341857, guid: 2a271e4c8ec59c248900f0d2da2087c1, type: 3}
       propertyPath: m_text
       value: Stress
@@ -3886,7 +3882,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   choiceDatas: {fileID: 11400000, guid: 75f5e5d7dda4fc74d9d9eea463bf19d0, type: 2}
   startingHappiness: 0.5
-  startingStress: 0.3
+  startingStress: 0.1
   startingBalance: 0.5
 --- !u!1 &1671990449
 GameObject:

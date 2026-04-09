@@ -16,10 +16,27 @@ namespace BeatSaberVR
         public float CurrentStress { get; private set; }
         public float CurrentBalance { get; private set; }
 
+        private float previousStress;
+
         public override void Awake()
         {
             base.Awake();
+        }
+
+        private void OnEnable()
+        {
+            BeatSaberVREvents.OnGameStart += OnStart;
+        }
+
+        private void OnDisable()
+        {
+            BeatSaberVREvents.OnGameStart -= OnStart;
+        }
+
+        private void OnStart()
+        {
             ResetStats();
+            NotifyUI();
         }
 
         public void ResetStats()
@@ -27,10 +44,6 @@ namespace BeatSaberVR
             CurrentHappiness = startingHappiness;
             CurrentStress = startingStress;
             CurrentBalance = startingBalance;
-        }
-        private void Start()
-        {
-            NotifyUI();
         }
 
         public void ProcessChoice(ChoiceDataEntry data, BlockColor blockColor)
@@ -53,11 +66,16 @@ namespace BeatSaberVR
 
         private void ApplyDeltas(float happinessDelta, float stressDelta, float financeDelta)
         {
-            CurrentHappiness = Mathf.Clamp01(CurrentHappiness + happinessDelta);
-            CurrentStress = Mathf.Clamp01(CurrentStress + stressDelta);
-            CurrentBalance = Mathf.Clamp01(CurrentBalance + financeDelta);
-
+            previousStress = CurrentStress;
+            CurrentHappiness = happinessDelta;
+            CurrentStress = stressDelta;
+            CurrentBalance = financeDelta;
             Debug.Log($"[Finance] H:{CurrentHappiness:P0}  S:{CurrentStress:P0}  B:{CurrentBalance:P0}");
+
+            float baseReward = 20f;
+            float stressFactor = 0.5f - CurrentStress;
+            int finalPoints = Mathf.RoundToInt(baseReward * (stressFactor * 2f));
+            BeatSaberVREvents.OnAddScore?.Invoke(finalPoints);
             NotifyUI();
         }
 

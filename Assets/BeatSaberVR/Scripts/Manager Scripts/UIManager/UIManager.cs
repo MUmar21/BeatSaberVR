@@ -103,7 +103,12 @@ namespace BeatSaberVR
 
         public void UpdateTimerText(float timeRemaining)
         {
-            timerText.text = $"Time: {timeRemaining:F1}s";
+            if (timerText == null) return;
+
+            timeRemaining = Mathf.Max(0f, timeRemaining);
+            int minutes = (int)(timeRemaining / 60f);
+            int seconds = (int)(timeRemaining % 60f);
+            timerText.text = $"Time: {minutes}:{seconds:00}";
         }
 
         public void UpdateFinanceRatesFill(float happy, float stress, float finance)

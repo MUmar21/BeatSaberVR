@@ -13,13 +13,13 @@ namespace BeatSaberVR
     {
         [Header("Green Option (Positive Choice)")]
         public string greenText;
-        [Range(-1f, 1f)] public float greenHappinessDelta;
-        [Range(-1f, 1f)] public float greenStressDelta;
-        [Range(-1f, 1f)] public float greenFinanceDelta;
+        [Range(0f, 1f)] public float greenHappinessDelta;
+        [Range(0f, 1f)] public float greenStressDelta;
+        [Range(0f, 1f)] public float greenFinanceDelta;
         [Header("Red Option (Negative Choice)")]
         public string redText;
-        [Range(-1f, 1f)] public float redHappinessDelta;
-        [Range(-1f, 1f)] public float redStressDelta;
-        [Range(-1f, 1f)] public float redFinanceDelta;
+        [Range(0f, 1f)] public float redHappinessDelta;
+        [Range(0f, 1f)] public float redStressDelta;
+        [Range(0f, 1f)] public float redFinanceDelta;
     }
 }
