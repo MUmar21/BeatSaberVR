@@ -86,6 +86,9 @@ namespace BeatSaberVR
 
             block.choiceText.text = (color == BlockColor.Blue) ? choice.greenText : choice.redText;
 
+            Sprite icon = (color == BlockColor.Blue) ? choice.greenChoiceIcon : choice.redChoiceIcon;
+            if (icon != null) block.choiceSprite.sprite = icon;
+
             block.gameObject.SetActive(true);
             block.SetDirectionPoint(dir);
         }

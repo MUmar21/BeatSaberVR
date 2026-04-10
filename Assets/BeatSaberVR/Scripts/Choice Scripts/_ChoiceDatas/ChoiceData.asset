@@ -14,42 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatSaberVR.ChoiceData
   ChoiceEntries:
   - greenText: Save Money
+    greenChoiceIcon: {fileID: 0}
     greenHappinessDelta: 0.2
     greenStressDelta: 0.1
     greenFinanceDelta: 0.5
     redText: Buy Luxury Car
+    redChoiceIcon: {fileID: 0}
     redHappinessDelta: 0.5
     redStressDelta: 0.3
     redFinanceDelta: 0.3
   - greenText: Invest in Stocks
+    greenChoiceIcon: {fileID: 0}
     greenHappinessDelta: 0.3
     greenStressDelta: 0.2
     greenFinanceDelta: 0.5
     redText: Keep Cash in Mattress
+    redChoiceIcon: {fileID: 0}
     redHappinessDelta: 0.2
     redStressDelta: 0.4
     redFinanceDelta: 0.3
   - greenText: Build Emergency Fund
+    greenChoiceIcon: {fileID: 0}
     greenHappinessDelta: 0.2
     greenStressDelta: 0.1
     greenFinanceDelta: 0.4
     redText: Spend on Luxury Watch
+    redChoiceIcon: {fileID: 0}
     redHappinessDelta: 0.5
     redStressDelta: 0.4
     redFinanceDelta: 0.1
   - greenText: Buy Health Insurance
+    greenChoiceIcon: {fileID: 21300000, guid: ce1274aa86b8002409ea64ec6f46d796, type: 3}
     greenHappinessDelta: 0.4
     greenStressDelta: 0.15
     greenFinanceDelta: 0.2
     redText: Take the Risk
+    redChoiceIcon: {fileID: 21300000, guid: ce1274aa86b8002409ea64ec6f46d796, type: 3}
     redHappinessDelta: 0.1
     redStressDelta: 0.6
     redFinanceDelta: 0.5
   - greenText: Invest For Future
+    greenChoiceIcon: {fileID: 0}
     greenHappinessDelta: 0.4
     greenStressDelta: 0.25
     greenFinanceDelta: 0.5
     redText: Take High Interrest Loan
+    redChoiceIcon: {fileID: 0}
     redHappinessDelta: 0.1
     redStressDelta: 0.8
     redFinanceDelta: 0.8

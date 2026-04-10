@@ -6,9 +6,10 @@ namespace BeatSaberVR
     public class BlockBehavior : MonoBehaviour
     {
         [Header("References")]
-        public Transform directionPoint;
-        public GameObject defaultPoint;
         public TMP_Text choiceText;
+        public SpriteRenderer choiceSprite;
+        [SerializeField] private Transform directionPoint;
+        [SerializeField] private GameObject defaultPoint;
 
         public ChoiceDataEntry Data { get; set; }
 

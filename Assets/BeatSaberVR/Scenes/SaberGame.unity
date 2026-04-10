@@ -288,6 +288,7 @@ MonoBehaviour:
   happinessFill: {fileID: 724799477}
   stressFill: {fileID: 1676325370}
   financialFill: {fileID: 1868479872}
+  fillDuration: 0.5
   swordSelection:
     swordDatas:
     - sword: 0
@@ -9647,7 +9648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BlockSpawner
   playerFinanceManager: {fileID: 306711673}
   spawnZ: 17
-  delayBetweenChoices: 3
+  delayBetweenChoices: 1
 --- !u!1001 &951654434
 PrefabInstance:
   m_ObjectHideFlags: 0

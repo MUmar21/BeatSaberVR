@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +24,7 @@ namespace BeatSaberVR
         [SerializeField] private Image happinessFill;
         [SerializeField] private Image stressFill;
         [SerializeField] private Image financialFill;
+        [SerializeField] private float fillDuration = 0.5f;
 
         [Header("Sword Selection")]
         [SerializeField] private SwordSelection swordSelection;
@@ -113,9 +115,13 @@ namespace BeatSaberVR
 
         public void UpdateFinanceRatesFill(float happy, float stress, float finance)
         {
-            happinessFill.fillAmount = happy;
-            stressFill.fillAmount = stress;
-            financialFill.fillAmount = finance;
+            happinessFill?.DOKill();
+            stressFill?.DOKill();
+            financialFill?.DOKill();
+
+            happinessFill.DOFillAmount(happy, fillDuration).SetEase(Ease.OutQuad);
+            stressFill.DOFillAmount(stress, fillDuration).SetEase(Ease.OutQuad);
+            financialFill.DOFillAmount(finance, fillDuration).SetEase(Ease.OutQuad);
         }
 
         private void OnGameOverScreen(int finalScore)
