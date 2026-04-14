@@ -1,22 +1,8 @@
 using UnityEngine;
 namespace BeatSaberVR
 {
-    [System.Serializable]
-    public struct SwordData
-    {
-        public Swords sword;
-        public GameObject gameObject;
-    }
-
-    public enum Swords
-    {
-        SwordA, SwordB
-    }
-
     public class SaberController : MonoBehaviour
     {
-        public SwordData[] swordDatas;
-
         [Header("Identity")]
         public BlockColor saberColor;   // set Left on left saber, Right on right saber
 
@@ -25,17 +11,6 @@ namespace BeatSaberVR
 
         private Vector3 lastPosition;
         private Vector3 lastSwingDir;
-
-        private void OnEnable()
-        {
-            BeatSaberVREvents.OnSwordSelected += OnSwordSelected;
-
-        }
-
-        private void OnDisable()
-        {
-            BeatSaberVREvents.OnSwordSelected -= OnSwordSelected;
-        }
 
         void Start()
         {
@@ -54,19 +29,5 @@ namespace BeatSaberVR
         }
 
         public float Speed => velocity.magnitude;
-
-        private void OnSwordSelected(Swords swords)
-        {
-            if (swordDatas == null || swordDatas.Length == 0) return;
-
-            for (int i = 0; i < swordDatas.Length; i++)
-            {
-                if (swordDatas[i].gameObject != null && swordDatas[i].sword == swords)
-                    swordDatas[i].gameObject.SetActive(true);
-                else
-                    swordDatas[i].gameObject.SetActive(false);
-            }
-        }
-
     }
 }

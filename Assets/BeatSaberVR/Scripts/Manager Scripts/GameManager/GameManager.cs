@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BeatSaberVR
 {
-    public enum BlockColor { Red, Blue } // red = left, blue = right
+    public enum BlockColor { Red, Blue } // red = right, blue = left
     public enum CutDirection { Up, Down, Left, Right, Any }
 
     public class GameManager : Singleton<GameManager>

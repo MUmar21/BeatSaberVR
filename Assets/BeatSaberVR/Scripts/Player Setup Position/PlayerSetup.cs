@@ -1,6 +1,6 @@
 using System.Collections;
 using BeatSaberVR;
-using DG.Tweening; // Ensure DOTween is imported
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerSetup : MonoBehaviour
