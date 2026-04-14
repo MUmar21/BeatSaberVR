@@ -57,6 +57,7 @@ MonoBehaviour:
   directionPoint: {fileID: 357571944797122730}
   defaultPoint: {fileID: 9125309434282968892}
   speed: 0.5
+  returnPos: -15
   blockColor: 0
   cutDirection: 0
   minSwingSpeed: 0

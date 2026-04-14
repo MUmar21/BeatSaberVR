@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/BeatSaberVR/Scenes/BeatSaber.unity
     guid: 2a42421775a0a05419f9e33afea6ba58
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f79158614ccf1844ea635a7185caf7a3, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c872ebb38c96a954ca6549564e1aa398, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9bec1ce6a03ccba4b9a8215241b32e63, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: a49cadc1a815591479693b955ccf08c1, type: 2}

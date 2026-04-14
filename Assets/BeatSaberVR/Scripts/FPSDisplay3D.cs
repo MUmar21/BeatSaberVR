@@ -11,7 +11,7 @@ namespace GOSIVR
 
         private void Start()
         {
-            Application.targetFrameRate = 72;
+            //Application.targetFrameRate = 72;
 
             _Text = GetComponent<TextMeshPro>();
         }

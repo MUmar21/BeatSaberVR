@@ -15,6 +15,7 @@ namespace BeatSaberVR
 
         [Header("Block Settings")]
         [SerializeField] private float speed = 5f;
+        [SerializeField] private float returnPos = -2.5f;
         public BlockColor blockColor;
         public CutDirection cutDirection;
 
@@ -51,7 +52,7 @@ namespace BeatSaberVR
         {
             transform.Translate(Vector3.back * speed * Time.deltaTime);
 
-            if (transform.position.z < -1.5f && !wasHit)
+            if (transform.position.z < returnPos && !wasHit)
             {
                 OnMissHit(null);
             }
