@@ -100,6 +100,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3763459967612125120, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: bladeTip
+      value: 
+      objectReference: {fileID: 8931449770705255379}
+    - target: {fileID: 3763459967612125120, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+      propertyPath: bladeBase
+      value: 
+      objectReference: {fileID: 1921943499103560144}
     - target: {fileID: 5063991017130269722, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
       propertyPath: saberColor
       value: 0
@@ -179,6 +187,11 @@ PrefabInstance:
       addedObject: {fileID: 1951509712997370606}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+--- !u!4 &1921943499103560144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6356479883646011699, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+  m_PrefabInstance: {fileID: 4799392080916080867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4124398098422493401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8909830476355049530, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
@@ -192,6 +205,11 @@ AudioSource:
 --- !u!1 &7750991374815375399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2957686543263717572, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
+  m_PrefabInstance: {fileID: 4799392080916080867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8931449770705255379 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4136626170025349936, guid: d83d328b048613349b8a3446ddd718fa, type: 3}
   m_PrefabInstance: {fileID: 4799392080916080867}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7260405864809889543
@@ -285,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
   collisionEffect: {fileID: 0}
   sfx: {fileID: 4813540916045526492}
+  bladeBase: {fileID: 0}
+  bladeTip: {fileID: 0}
 --- !u!114 &5232699714731259881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
   collisionEffect: {fileID: 0}
   sfx: {fileID: 4813540916045526492}
+  bladeBase: {fileID: 0}
+  bladeTip: {fileID: 0}
 --- !u!114 &8847697389662053949
 MonoBehaviour:
   m_ObjectHideFlags: 0

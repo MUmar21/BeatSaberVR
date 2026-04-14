@@ -581,6 +581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
   collisionEffect: {fileID: 8820788071516102528}
   sfx: {fileID: 24765807462505791}
+  bladeBase: {fileID: 6356479883646011699}
+  bladeTip: {fileID: 4136626170025349936}
 --- !u!114 &1101028369546060507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +714,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
   collisionEffect: {fileID: 0}
   sfx: {fileID: 24765807462505791}
+  bladeBase: {fileID: 0}
+  bladeTip: {fileID: 0}
 --- !u!114 &4205670614894134905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,6 +832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
   collisionEffect: {fileID: 8820788071516102528}
   sfx: {fileID: 24765807462505791}
+  bladeBase: {fileID: 0}
+  bladeTip: {fileID: 0}
 --- !u!114 &2563794716410633917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,6 +970,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SabersColiisionEffect
   collisionEffect: {fileID: 0}
   sfx: {fileID: 24765807462505791}
+  bladeBase: {fileID: 0}
+  bladeTip: {fileID: 0}
 --- !u!114 &5339814727872257804
 MonoBehaviour:
   m_ObjectHideFlags: 0
