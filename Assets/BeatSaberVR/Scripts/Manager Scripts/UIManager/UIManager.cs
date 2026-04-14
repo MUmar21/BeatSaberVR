@@ -25,6 +25,9 @@ namespace BeatSaberVR
         [SerializeField] private Image stressFill;
         [SerializeField] private Image financialFill;
         [SerializeField] private float fillDuration = 0.5f;
+        [Header("Line Visuals")]
+        [SerializeField] private GameObject leftLineVisual;
+        [SerializeField] private GameObject rightLineVisual;
 
         [Header("Sword Selection")]
         [SerializeField] private SwordSelection swordSelection;
@@ -136,6 +139,8 @@ namespace BeatSaberVR
             scoreText.gameObject.SetActive(toggle);
             timerText.gameObject.SetActive(toggle);
             userRatingCanvas.SetActive(toggle);
+            leftLineVisual.SetActive(!toggle);
+            rightLineVisual.SetActive(!toggle);
         }
 
         #region Sword Selection

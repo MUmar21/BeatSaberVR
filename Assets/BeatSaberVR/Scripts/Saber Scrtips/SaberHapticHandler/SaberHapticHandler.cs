@@ -22,7 +22,7 @@ public class SaberHapticHandler : MonoBehaviour
 
     private void Awake()
     {
-        node = (saberColor == BlockColor.Red) ? XRNode.LeftHand : XRNode.RightHand;
+        node = (saberColor == BlockColor.Red) ? XRNode.RightHand : XRNode.LeftHand;
     }
 
     private void OnEnable()
@@ -72,13 +72,13 @@ public class SaberHapticHandler : MonoBehaviour
 
     public void TriggerHaptic(float intensity, float duration)
     {
-        if (Application.isEditor)
-            Debug.Log($"Triggering haptic on {node} with intensity {intensity} and duration {duration}");
+        //if (Application.isEditor)
+        //Debug.Log($"Triggering haptic on {node} with intensity {intensity} and duration {duration}");
 
         InputDevice device = InputDevices.GetDeviceAtXRNode(node);
         if (device.isValid)
         {
-            Debug.Log($"Sending haptic impulse to {node}");
+            //Debug.Log($"Sending haptic impulse to {node}");
             device.SendHapticImpulse(0, intensity, duration);
         }
     }

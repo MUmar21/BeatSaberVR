@@ -289,6 +289,8 @@ MonoBehaviour:
   stressFill: {fileID: 1676325370}
   financialFill: {fileID: 1868479872}
   fillDuration: 0.5
+  leftLineVisual: {fileID: 1667283236}
+  rightLineVisual: {fileID: 777139026}
   swordSelection:
     swordDatas:
     - sword: 0
@@ -8591,6 +8593,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &777139026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4558113980030312978, guid: 8f2c0e258064b664589e71c41fe6a26f, type: 3}
+  m_PrefabInstance: {fileID: 723838311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779073323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13512,17 +13519,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190505483}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 2.786}
+  m_LocalRotation: {x: 0, y: -0.13052624, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 2.42}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1609639998}
   m_Father: {fileID: 1397045358}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -15, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.133, y: 0.602}
+  m_AnchoredPosition: {x: -2.53, y: 1.69}
   m_SizeDelta: {x: 700, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190505485
@@ -18071,17 +18078,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609296118}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 2.913}
+  m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 2.42}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 830932728}
   m_Father: {fileID: 1397045358}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.13300002, y: 1.075}
+  m_AnchoredPosition: {x: 2.53, y: 1.6899999}
   m_SizeDelta: {x: 700, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609296120
@@ -18592,6 +18599,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 850543159027813351, guid: 98ed3046027d3b54699b180b3fb69f60, type: 3}
   m_PrefabInstance: {fileID: 1665807686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1667283236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8338331954339838290, guid: 8f2c0e258064b664589e71c41fe6a26f, type: 3}
+  m_PrefabInstance: {fileID: 723838311}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1676325368
 PrefabInstance:

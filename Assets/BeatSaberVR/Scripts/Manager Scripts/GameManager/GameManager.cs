@@ -17,9 +17,12 @@ namespace BeatSaberVR
         private float timer;
         private Coroutine timerCoroutine;
 
-        private bool isGameOver = false;
         private int score = 0;
 
+        private bool blocksAreActive;
+        private bool timesUp;
+
+        public bool GameOver { get; set; }
         public bool GameplayStarted { get; set; }
 
         private void OnEnable()
@@ -52,7 +55,8 @@ namespace BeatSaberVR
             StopTimer();
             score = 0;
             timer = 0f;
-            isGameOver = false;
+            timesUp = false;
+            GameOver = false;
             UIManager.Instance.UpdateScoreAndComboTexts(score);
         }
 
@@ -65,7 +69,8 @@ namespace BeatSaberVR
 
                 if (timer >= levelTimeLimit)
                 {
-                    TriggerGameOver();
+                    timesUp = true;
+                    if (!blocksAreActive) TriggerGameOver();
                     yield break;
                 }
                 yield return null;
@@ -75,7 +80,7 @@ namespace BeatSaberVR
 
         private void AddScore(int points)
         {
-            if (isGameOver) return;
+            if (GameOver) return;
 
             score += points;
             score = (score < 0) ? 0 : score;
@@ -84,12 +89,11 @@ namespace BeatSaberVR
 
         private void TriggerGameOver()
         {
-            if (isGameOver) return;
+            if (GameOver) return;
 
-            isGameOver = true;
+            GameOver = true;
             GameplayStarted = false;
             BeatSaberVREvents.OnGameplayEnd?.Invoke();
-            //BeatSaberVREvents.OnGameOver?.Invoke(score);
         }
 
         private void StopTimer()
@@ -102,5 +106,15 @@ namespace BeatSaberVR
         }
 
         public int GetScore() => score;
+
+        public void BlocksAreActive(bool active)
+        {
+            blocksAreActive = active;
+
+            if (timesUp && !blocksAreActive)
+            {
+                TriggerGameOver();
+            }
+        }
     }
 }

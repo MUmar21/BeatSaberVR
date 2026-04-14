@@ -39,11 +39,13 @@ namespace BeatSaberVR
         private void OnEnable()
         {
             wasHit = false;
+            GameManager.Instance?.BlocksAreActive(true);
             BeatSaberVREvents.OnChoiceMade += Return;
             BeatSaberVREvents.OnGameplayEnd += Return;
         }
         private void OnDisable()
         {
+            GameManager.Instance?.BlocksAreActive(false);
             BeatSaberVREvents.OnChoiceMade -= Return;
             BeatSaberVREvents.OnGameplayEnd -= Return;
         }
@@ -223,6 +225,7 @@ namespace BeatSaberVR
 
         private void ReturnToPool()
         {
+            GameManager.Instance?.BlocksAreActive(false);
             PoolManager.Instance.ReturnBlock(this);
         }
 

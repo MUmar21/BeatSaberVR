@@ -71,7 +71,7 @@ namespace BeatSaberVR
             CurrentStress = Mathf.Clamp01(stressDelta);
             CurrentBalance = Mathf.Clamp01(financeDelta);
 
-            Debug.Log($"[Finance] H:{CurrentHappiness:P0} S:{CurrentStress:P0} B:{CurrentBalance:P0}");
+            //Debug.Log($"[Finance] H:{CurrentHappiness:P0} S:{CurrentStress:P0} B:{CurrentBalance:P0}");
 
             // Happiness and Balance are rewards; Stress is a heavy penalty.
             float weightHappiness = 0.5f;
